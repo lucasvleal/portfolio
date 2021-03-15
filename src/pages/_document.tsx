@@ -34,6 +34,7 @@ class MyDocument extends Document {
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Vidaloka&display=swap" rel="stylesheet" />
+          {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossOrigin="anonymous"></script> */}
         </Head>
         <body>
           <Main />
