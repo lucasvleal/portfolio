@@ -46,6 +46,10 @@ export const ItemNav = styled.a`
 
     @media (max-width: 768px) {
         width: 30vw;
+
+        & > span {
+            font-size: 16px;
+        }
     }
 
     /* background: green; */
@@ -56,6 +60,23 @@ export const NameAndTitle = styled(FlexContainerColumn)`
 
     height: 80vh;
 
+    @media (max-width: 768px) {
+        width: 30vw;
+
+        & > span {
+            font-size: 60px;
+            width: 90vw;
+        }
+
+        & > div  {
+            width: 90vw;
+        }
+
+        & > div > span {
+            font-size: 20px;
+
+        }
+    }
     /* background: yellow; */
 `;
 
@@ -88,7 +109,7 @@ export const LinkSocialMedia = styled.a`
 
     @media (max-width: 768px) {
         & > svg {
-            font-size: 24px;
+            font-size: 28px;
         }
     }
 `;
@@ -96,10 +117,14 @@ export const LinkSocialMedia = styled.a`
 
 // <ABOUT>
 export const About = styled.div`
-    height: 100vh;
+    min-height: 100vh;
     padding: 0 ${({ theme }) => theme.size.padding.horizontalContainer};
 
     background-color: ${({ theme }) => theme.color.backgroundColored};
+
+    /* @media (max-width: 768px) {
+        min-height: 100vh;
+    } */
 `;
 
 export const TitleBox = styled(FlexContainer)`
@@ -108,6 +133,11 @@ export const TitleBox = styled(FlexContainer)`
 
     height: 20vh;
 
+    @media (max-width: 768px) {
+        & > span {
+            font-size: 60px;
+        }
+    }
     /* background-color: red; */
 `;
 
@@ -115,17 +145,35 @@ export const AboutBox = styled.div`
     line-height: 40px;
     font-size: ${({ theme }) => theme.size.font.normal};
 
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+        line-height: 36px;
+    }
+
     /* background-color: red; */
 `;
 
 export const KnowledgeBox = styled.div`
     padding-top: 40px;
+
+    /* background: blue; */
+
+    @media (max-width: 768px) {
+        padding-top: 0;
+        padding: 10px 0;
+    }
 `;
 
 export const KnowledgeLine = styled(FlexContainer)`
     align-items: center;
 
     margin-top: 20px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        /* margin-bottom: 5vh; */
+    }
 `;
 
 export const KnowledgeTitle = styled.div`
@@ -141,6 +189,12 @@ export const KnowledgeTitle = styled.div`
 
     text-align: center;
     font-weight: bold;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        margin: 2vh 0;
+
+    }
 `;
 
 export const KnowledgeItems = styled(FlexContainer)`
@@ -149,6 +203,11 @@ export const KnowledgeItems = styled(FlexContainer)`
         align-items: center;
 
         font-size: 4px;
+    }
+
+    @media (max-width: 768px) {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 `;
 
@@ -168,10 +227,155 @@ export const Work = styled.div`
 
 // <CONTACT>
 export const Contact = styled.div`
-    height: 100vh;
+    min-height: 100vh;
     padding: 0 ${({ theme }) => theme.size.padding.horizontalContainer};
 
     background-color: ${({ theme }) => theme.color.backgroundColored};
+`;
+
+export const ContactFormBox = styled(FlexContainer)`
+    justify-content: center;
+    align-items: center;
+
+    /* background: red;  */
+`;
+
+export const Form = styled.form`
+    width: 700px;
+`;
+
+export const FormRow = styled(FlexContainer)`
+    justify-content: space-between;
+
+    & > div + div {
+        margin-left: 10vw;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+
+        & > div + div {
+            margin-left: 0;
+        }
+    }
+
+    /* background-color: red; */
+`;
+
+export const ContainerInput = styled(FlexContainerColumn)`
+    width: 100%;
+
+    /* background-color: red; */
+
+    & > label {
+        font-family: ${({ theme }) => theme.font.secundary};
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+        & > label {
+            font-size: 12px;
+        }
+    }
+`;
+
+export const Input = styled.input`
+    border: 1px solid black;
+    border-radius: 5px;
+    
+    width: 100%;
+    height: 45px;
+    
+    color: black;
+    font-family: ${({ theme }) => theme.font.principal};
+    padding: 0 8px;
+
+    margin-bottom: 40px;
+
+    &::placeholder {
+        color: rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+        height: 7vh;
+        font-size: 12px;
+
+        &::placeholder {
+            font-size: 12px;
+        }
+    }
+`;
+
+export const TextArea = styled.textarea`
+    border: 1px solid black;
+    border-radius: 5px;
+    
+    width: 100%;
+    height: 15vh;
+    
+    color: black;
+    font-family: ${({ theme }) => theme.font.principal};
+    padding: 8px;
+
+    &::placeholder {
+        color: rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+        font-size: 12px;
+        /* margin-bottom: 20vh; */
+
+        &::placeholder {
+            font-size: 12px;
+        }
+    }
+`;
+
+export const ButtonBox = styled(FlexContainer)`
+    flex: 1;
+    margin-top: 6vh;
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: tomato; */
+
+`;
+
+export const ButtonSend = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 300px;
+    height: 50px;
+
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+
+    color: white;
+    font-family: ${({ theme }) => theme.font.secundary};
+    font-weight: bold;
+    font-size: 18px;
+
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+        background-color: ${({ theme }) => theme.color.mediumGray};
+        transition: 0.2s;
+    }
+    
+    @media (max-width: 768px) {
+        width: 50vw;
+        height: 8vh;
+
+        margin-bottom: 4vh;
+    }
+
 `;
 // </CONTACT>
 
@@ -184,6 +388,16 @@ export const Footer = styled(FlexContainer)`
     padding: 0 ${({ theme }) => theme.size.padding.horizontalContainer};
 
     background-color: ${({ theme }) => theme.color.black};
+
+    @media (max-width: 768px) {
+        flex-direction: column-reverse;
+        justify-content: center;
+
+        & > span {
+            font-size: 12px;
+            font-weight: 400;
+        }
+    }
 `;
 
 export const LinksFooterBox = styled(FlexContainer)`
@@ -204,8 +418,10 @@ export const LinksFooterBox = styled(FlexContainer)`
 
     @media (max-width: 768px) {
         & svg {
-            font-size: 24px;
+            font-size: 28px;
         }
+
+        margin-bottom: 4vh;
     }
 `;
 // </FOOTER>

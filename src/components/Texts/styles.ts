@@ -13,9 +13,9 @@ export const Regular = styled.span<TextProps>`
     font-weight: ${(props) => props.customWeight};
     color: ${(props) => props.customColor};
 
-    @media (max-width: 768px) {
+    /* @media (max-width: 768px) {
         font-size: ${(props) => (props.customSize * 0.7) + 'px'};
-    }
+    } */
 `;
 
 export const Vidaloka = styled.span<TextProps>`
@@ -25,9 +25,9 @@ export const Vidaloka = styled.span<TextProps>`
     font-weight: ${(props) => props.customWeight};
     color: ${(props) => props.customColor};
 
-    @media (max-width: 768px) {
+    /* @media (max-width: 768px) {
         font-size: ${(props) => (props.customSize * 0.7) + 'px'};
-    }
+    } */
 `;
 
 export const Montserrat = styled.span<TextProps>`
@@ -37,8 +37,8 @@ export const Montserrat = styled.span<TextProps>`
     font-weight: ${(props) => props.customWeight};
     color: ${(props) => props.customColor};
 
-    @media (max-width: 768px) {
+    /* @media (max-width: 768px) {
         font-size: ${(props) => (props.customSize * 0.7) + 'px'};
-    }
+    } */
 `;
 

@@ -18,6 +18,14 @@ import {
   Item,
   Work,
   Contact,
+  ContactFormBox,
+  Form,
+  FormRow,
+  ContainerInput,
+  Input,
+  TextArea,
+  ButtonBox,
+  ButtonSend,
   Footer,
   // Copyright,
   LinksFooterBox,
@@ -182,6 +190,38 @@ export default function Home() {
         <TitleBox>
           <VidalokaText size={72}>contact</VidalokaText>
         </TitleBox>
+
+        <ContactFormBox>
+          <Form>
+            <FormRow>
+              <ContainerInput>
+                <label htmlFor="name">NAME</label>
+                <Input id="name" type="text" placeholder="Your name here..." required />
+              </ContainerInput>
+
+              <ContainerInput>
+                <label htmlFor="phone">PHONE</label>
+                <Input id="phone" type="text" placeholder="Your phone here..." />
+              </ContainerInput>
+            </FormRow>
+
+            <ContainerInput>
+              <label htmlFor="email">EMAIL</label>
+              <Input id="email" type="text" placeholder="Your email here..." required />
+            </ContainerInput>
+
+            <ContainerInput>
+              <label htmlFor="message">MESSAGE</label>
+              <TextArea id="message" placeholder="Your message here..." required ></TextArea>
+            </ContainerInput>
+
+            <ButtonBox>
+              <ButtonSend>
+                SEND
+              </ButtonSend>
+            </ButtonBox>
+          </Form>
+        </ContactFormBox>
       </Contact>
     
       <Footer>
