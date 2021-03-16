@@ -9,7 +9,7 @@ interface Props {
     size?: number;
 }
 
-export default function RegularText({ heading, texts, color, size }: Props) {
+export default function Typer({ heading, texts, color, size }: Props) {
     const [text, setText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
     const [loopNum, setLoopNum] = useState(0);

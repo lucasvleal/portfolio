@@ -223,6 +223,36 @@ export const Work = styled.div`
 
     background-color: ${({ theme }) => theme.color.white};
 `;
+
+export const ProjectsBox = styled.div`
+    height: 73vh;
+`;
+
+export const LoadingMoreBox = styled(FlexContainer)`
+    justify-content: center;
+    align-items: center;
+
+    height: 7vh;
+
+    & > span {
+        cursor: pointer;
+
+        &:hover {
+            animation: spin 2000ms infinite;
+        }
+    }
+
+    @keyframes spin {
+        from {
+            transform:rotate(0deg);
+        }
+        to {
+            transform:rotate(360deg);
+        }
+    }
+
+    /* background-color: tomato; */
+`;
 // </WORK>
 
 // <CONTACT>

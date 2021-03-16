@@ -17,6 +17,8 @@ import {
   KnowledgeItems,
   Item,
   Work,
+  ProjectsBox,
+  LoadingMoreBox,
   Contact,
   ContactFormBox,
   Form,
@@ -27,14 +29,42 @@ import {
   ButtonBox,
   ButtonSend,
   Footer,
-  // Copyright,
   LinksFooterBox,
 } from '../styles/pages/Home';
 
 import { MontserratText, VidalokaText, RegularText } from '../components/Texts';
 import Typer from '../components/Typer';
+import Project from '../components/Project';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+const projects = [
+  {  
+    id: 1,  
+    title: "Marrey Sanchez",
+    description: "A website to a Brazilian traditional Lawer Office. There are shown the history of the office and they lawyers. The layout was build to demonstrate elegance and confiability.",
+    link: "http://marreysanchez.com.br",
+    technologies: ["html", "css", "js", "jquery"],
+    mockup: '',
+  },
+  {  
+    id: 2,  
+    title: "Vitrine Virtual",
+    description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
+    link: "http://vitrinevirtual.com.br",
+    technologies: ["nodejs", "react-native", "react"],
+    mockup: '',
+  },
+  {  
+    id: 3,  
+    title: "Parcelamos Tudo",
+    description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
+    link: "http://parcelamostudo.com.br",
+    technologies: ["nodejs", "react-native", "react"],
+    mockup: '',
+  },
+  
+]
 
 export default function Home() {
   return (
@@ -184,6 +214,23 @@ export default function Home() {
         <TitleBox>
           <VidalokaText size={72}>work</VidalokaText>
         </TitleBox>
+
+        <ProjectsBox>
+          {
+            projects.map(project => (
+              <Project
+                title={project.title}
+                description={project.description}
+                technologies={project.technologies}
+                side={project.id % 2 === 0 ? "right" : "left"}
+              />
+            ))
+          }
+        </ProjectsBox>
+
+        <LoadingMoreBox>
+          <VidalokaText size={48}>+</VidalokaText>
+        </LoadingMoreBox>
       </Work>
 
       <Contact id="contact">
@@ -195,7 +242,7 @@ export default function Home() {
           <Form>
             <FormRow>
               <ContainerInput>
-                <label htmlFor="name">NAME</label>
+                <label htmlFor="name">NAME <MontserratText color="tomato" weight="600">*</MontserratText></label>
                 <Input id="name" type="text" placeholder="Your name here..." required />
               </ContainerInput>
 
@@ -206,12 +253,12 @@ export default function Home() {
             </FormRow>
 
             <ContainerInput>
-              <label htmlFor="email">EMAIL</label>
+              <label htmlFor="email">EMAIL <MontserratText color="tomato" weight="600">*</MontserratText></label>
               <Input id="email" type="text" placeholder="Your email here..." required />
             </ContainerInput>
 
             <ContainerInput>
-              <label htmlFor="message">MESSAGE</label>
+              <label htmlFor="message">MESSAGE <MontserratText color="tomato" weight="600">*</MontserratText></label>
               <TextArea id="message" placeholder="Your message here..." required ></TextArea>
             </ContainerInput>
 
