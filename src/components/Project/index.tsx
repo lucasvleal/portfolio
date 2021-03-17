@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import IconTechnology from '../IconTechnology';
 import { MontserratText, VidalokaText } from '../Texts';
 
 import { 
@@ -25,7 +26,11 @@ export default function Project({ title, description, technologies, side }: Prop
                 <VidalokaText size={36}>{title}</VidalokaText>
 
                 <IconsTechnologies>
-                    {technologies}
+                    {
+                        technologies.map((tech) => (
+                            <IconTechnology technology={tech} />
+                        ))
+                    }
                 </IconsTechnologies>
             </TitleBox>
 

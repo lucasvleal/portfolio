@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEvent, useCallback, useEffect, useState, ChangeEvent, } from 'react';
 
 import { 
   Container,
@@ -44,7 +44,7 @@ const projects = [
     title: "Marrey Sanchez",
     description: "A website to a Brazilian traditional Lawer Office. There are shown the history of the office and they lawyers. The layout was build to demonstrate elegance and confiability.",
     link: "http://marreysanchez.com.br",
-    technologies: ["html", "css", "js", "jquery"],
+    technologies: ["html", "css", "javascript", "jquery"],
     mockup: '',
   },
   {  
@@ -52,7 +52,7 @@ const projects = [
     title: "Vitrine Virtual",
     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
     link: "http://vitrinevirtual.com.br",
-    technologies: ["nodejs", "react-native", "react"],
+    technologies: ["nodejs", "react-native", "reactjs", "php", "mysql"],
     mockup: '',
   },
   {  
@@ -60,13 +60,107 @@ const projects = [
     title: "Parcelamos Tudo",
     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
     link: "http://parcelamostudo.com.br",
-    technologies: ["nodejs", "react-native", "react"],
+    technologies: ["nodejs", "react-native", "reactjs", "docker"],
     mockup: '',
   },
-  
+  {  
+    id: 4,  
+    title: "Parcelamos Tudo",
+    description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
+    link: "http://parcelamostudo.com.br",
+    technologies: ["nodejs", "react-native", "reactjs", "docker"],
+    mockup: '',
+  },
+  {  
+    id: 5,  
+    title: "Parcelamos Tudo",
+    description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
+    link: "http://parcelamostudo.com.br",
+    technologies: ["nodejs", "react-native", "reactjs", "docker"],
+    mockup: '',
+  },
+  {  
+    id: 6,  
+    title: "Parcelamos Tudo",
+    description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
+    link: "http://parcelamostudo.com.br",
+    technologies: ["nodejs", "react-native", "reactjs", "docker"],
+    mockup: '',
+  },
+  {  
+    id: 7,  
+    title: "Parcelamos Tudo",
+    description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
+    link: "http://parcelamostudo.com.br",
+    technologies: ["nodejs", "react-native", "reactjs", "docker"],
+    mockup: '',
+  },  
 ]
 
+const projectsPerPage = 1;
+let arrayHoldingProjects = [];
+
 export default function Home() {
+  const [projectsToShow, setProjectsToShow] = useState([]);
+  const [next, setNext] = useState(3);
+
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const sliceMoreProje = useCallback((start, end) => {
+    const slicedProjects = projects.slice(start, end);
+
+    arrayHoldingProjects = [...arrayHoldingProjects, ...slicedProjects];
+
+    setProjectsToShow(arrayHoldingProjects);
+  }, [projects, arrayHoldingProjects]);
+
+  useEffect(() => {
+    sliceMoreProje(0, 3);
+  }, []);
+
+  const handleShowMoreProjects = useCallback(() => {
+    sliceMoreProje(next, next + projectsPerPage);
+    setNext(next + projectsPerPage);
+  }, [next, projectsPerPage]);
+
+  const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
+  }
+
+  const handleChangePhone = (event: ChangeEvent<HTMLInputElement>) => {
+    setPhone(event.target.value);
+  }
+
+  const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  }
+
+  const handleChangeMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(event.target.value);
+  }
+
+  const handleSendEmail = useCallback((event: FormEvent) => {
+    event.preventDefault();
+
+    let body = `
+      Hello Lucas! I am ${name}, I came to you through your portfolio, I would like to leave a message %0D%0A%0D%0A
+
+      My infos ---- %0D%0A
+      Phone: ${phone} %0D%0A
+      Email: ${email} %0D%0A%0D%0A
+
+      Message ---- %0D%0A
+      ${message} %0D%0A%0D%0A
+    `;
+
+    const mailTo = `mailto:lucasleal.dev@gmail.com?subject=Contact%20From%20Portfolio&body=${body}`;
+
+    window.location = mailTo;
+  }, [name, phone, email, message]);
+
   return (
     <Container>
       <Greeting>
@@ -96,7 +190,12 @@ export default function Home() {
           </MontserratText>
 
           <Typer 
-            texts={["FullStack Javascript Developer.", "Front-end lover.", "Mobile enthusiast.","Passionate about sports and technology."]}
+            texts={[
+              "FullStack Javascript Developer.", 
+              "Front-end lover.", 
+              "Mobile enthusiast.",
+              "Passionate about sports and technology."
+            ]}
           />
         </NameAndTitle>
 
@@ -217,7 +316,7 @@ export default function Home() {
 
         <ProjectsBox>
           {
-            projects.map(project => (
+            projectsToShow.map(project => (
               <Project
                 title={project.title}
                 description={project.description}
@@ -228,7 +327,7 @@ export default function Home() {
           }
         </ProjectsBox>
 
-        <LoadingMoreBox>
+        <LoadingMoreBox onClick={handleShowMoreProjects}>
           <VidalokaText size={48}>+</VidalokaText>
         </LoadingMoreBox>
       </Work>
@@ -243,27 +342,49 @@ export default function Home() {
             <FormRow>
               <ContainerInput>
                 <label htmlFor="name">NAME <MontserratText color="tomato" weight="600">*</MontserratText></label>
-                <Input id="name" type="text" placeholder="Your name here..." required />
+                <Input 
+                  id="name" 
+                  type="text" 
+                  placeholder="Your name here..." 
+                  onChange={handleChangeName}
+                  required 
+                />
               </ContainerInput>
 
               <ContainerInput>
                 <label htmlFor="phone">PHONE</label>
-                <Input id="phone" type="text" placeholder="Your phone here..." />
+                <Input 
+                  id="phone" 
+                  type="text" 
+                  placeholder="Your phone here..."
+                  onChange={handleChangePhone}
+                />
               </ContainerInput>
             </FormRow>
 
             <ContainerInput>
               <label htmlFor="email">EMAIL <MontserratText color="tomato" weight="600">*</MontserratText></label>
-              <Input id="email" type="text" placeholder="Your email here..." required />
+              <Input 
+                id="email" 
+                type="text" 
+                placeholder="Your email here..." 
+                onChange={handleChangeEmail}
+                required 
+              />
             </ContainerInput>
 
             <ContainerInput>
               <label htmlFor="message">MESSAGE <MontserratText color="tomato" weight="600">*</MontserratText></label>
-              <TextArea id="message" placeholder="Your message here..." required ></TextArea>
+              <TextArea 
+                id="message" 
+                placeholder="Your message here..."
+                onChange={handleChangeMessage}
+                required 
+              ></TextArea>
             </ContainerInput>
 
             <ButtonBox>
-              <ButtonSend>
+              <ButtonSend onClick={handleSendEmail}>
                 SEND
               </ButtonSend>
             </ButtonBox>

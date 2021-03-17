@@ -218,21 +218,21 @@ export const Item = styled.div`
 
 // <WORK>
 export const Work = styled.div`
-    height: 100vh;
+    min-height: 100vh;
     padding: 0 ${({ theme }) => theme.size.padding.horizontalContainer};
 
     background-color: ${({ theme }) => theme.color.white};
 `;
 
 export const ProjectsBox = styled.div`
-    height: 73vh;
+    min-height: 73vh;
 `;
 
 export const LoadingMoreBox = styled(FlexContainer)`
     justify-content: center;
     align-items: center;
 
-    height: 7vh;
+    min-height: 7vh;
 
     & > span {
         cursor: pointer;
