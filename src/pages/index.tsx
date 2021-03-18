@@ -1,4 +1,5 @@
 import React, { FormEvent, useCallback, useEffect, useState, ChangeEvent, } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { 
   Container,
@@ -35,8 +36,8 @@ import {
 import { MontserratText, VidalokaText, RegularText } from '../components/Texts';
 import Typer from '../components/Typer';
 import Project from '../components/Project';
+import Modal from '../components/Modal';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const projects = [
   {  
@@ -100,9 +101,25 @@ const projects = [
 const projectsPerPage = 1;
 let arrayHoldingProjects = [];
 
+interface IProject {
+    id: number;
+    title: string;
+    description: string;
+    link: string;
+    technologies: string[];
+    mockup: string;
+}
+
 export default function Home() {
   const [projectsToShow, setProjectsToShow] = useState([]);
   const [next, setNext] = useState(3);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [projectTitle, setProjectTitle] = useState('');
+  const [projectDescription, setProjectDescription] = useState('');
+  const [projectLink, setProjectLink] = useState('');
+  const [projectTechnologies, setProjectTechnologies] = useState([]);
+  const [projectMockup, setProjectMockup] = useState('');
 
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -125,6 +142,18 @@ export default function Home() {
     sliceMoreProje(next, next + projectsPerPage);
     setNext(next + projectsPerPage);
   }, [next, projectsPerPage]);
+
+  const handleOpenModalProject = useCallback((project: IProject) => {
+    setProjectTitle(project.title);
+    setProjectDescription(project.description);
+    setProjectLink(project.link);
+    setProjectTechnologies(project.technologies);
+    setProjectMockup(project.mockup);
+
+    setIsModalOpen(true);
+
+    console.log('abrir modal');
+  }, []);
 
   const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -173,7 +202,7 @@ export default function Home() {
 
           <ItemNav  href="#work">
             <MontserratText size={18} weight="bold">
-              work
+              projects
             </MontserratText>
           </ItemNav>
 
@@ -311,7 +340,7 @@ export default function Home() {
 
       <Work id="work">
         <TitleBox>
-          <VidalokaText size={72}>work</VidalokaText>
+          <VidalokaText size={72}>projects</VidalokaText>
         </TitleBox>
 
         <ProjectsBox>
@@ -322,6 +351,7 @@ export default function Home() {
                 description={project.description}
                 technologies={project.technologies}
                 side={project.id % 2 === 0 ? "right" : "left"}
+                handleSeeMore={() => handleOpenModalProject(project)}
               />
             ))
           }
@@ -413,6 +443,16 @@ export default function Home() {
           </LinkSocialMedia>
         </LinksFooterBox>
       </Footer>
+    
+      <Modal 
+        open={isModalOpen}
+        title={projectTitle}
+        description={projectDescription}
+        link={projectLink}
+        technologies={projectTechnologies}
+        mockupLink={projectMockup}
+        handleCloseModal={() => setIsModalOpen(false)}
+      />
     </Container>
   )
 }

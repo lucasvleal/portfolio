@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 
 import { Regular, Vidaloka, Montserrat, } from './styles';
 
-interface Props { 
+interface Props extends HTMLAttributes<HTMLSpanElement> { 
     size?: number;
     weight?: number | string;
     color?: string;

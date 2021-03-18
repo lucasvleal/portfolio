@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { DOMAttributes, HTMLAttributes, useEffect, useState } from 'react';
 import IconTechnology from '../IconTechnology';
 import { MontserratText, VidalokaText } from '../Texts';
 
@@ -17,9 +17,10 @@ interface Props {
     // link?: string;
     technologies?: string[];
     side: "left" | "right";
+    handleSeeMore: () => void;
 }
 
-export default function Project({ title, description, technologies, side }: Props) {
+export default function Project({ title, description, technologies, side, handleSeeMore }: Props) {
     return (
         <Container side={side}>
             <TitleBox id="title">
@@ -38,7 +39,7 @@ export default function Project({ title, description, technologies, side }: Prop
                 {description}
             </DescriptionBox>
 
-            <SeeMoreBox id="seeMore">
+            <SeeMoreBox id="seeMore" onClick={handleSeeMore}>
                 <MontserratText size={16} weight="900" >
                     read and see more about it...
                 </MontserratText>

@@ -42,7 +42,7 @@ export const Container = styled.div`
             @media (max-width: 768px) {
                 width: 24vw;
                 bottom: calc(100% + 10vw);
-
+                font-size: 10px;
             }
         }        
     }

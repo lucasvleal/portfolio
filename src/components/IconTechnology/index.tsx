@@ -5,7 +5,6 @@ import { MontserratText } from '../Texts';
 
 import { 
     Container,
-    Tooltip,
 } from './styles';
 
 interface Props { 
