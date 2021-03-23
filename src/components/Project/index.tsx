@@ -1,4 +1,5 @@
 import React, { DOMAttributes, HTMLAttributes, useEffect, useState } from 'react';
+import AndOthers from '../AndOthers';
 import IconTechnology from '../IconTechnology';
 import { MontserratText, VidalokaText } from '../Texts';
 
@@ -21,17 +22,23 @@ interface Props {
 }
 
 export default function Project({ title, description, technologies, side, handleSeeMore }: Props) {
+    const techsToShow = technologies.slice(0, 3);
+
     return (
         <Container side={side}>
             <TitleBox id="title">
                 <VidalokaText size={36}>{title}</VidalokaText>
 
                 <IconsTechnologies>
-                    {
-                        technologies.map((tech) => (
+                    { (technologies.length > 3 && side === 'right') && <AndOthers /> }
+                    
+                    {                        
+                        techsToShow.map((tech) => (
                             <IconTechnology technology={tech} />
                         ))
                     }
+
+                    { (technologies.length > 3 && side === 'left') && <AndOthers /> }
                 </IconsTechnologies>
             </TitleBox>
 

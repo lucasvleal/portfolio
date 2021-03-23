@@ -242,6 +242,18 @@ export const LoadingMoreBox = styled(FlexContainer)`
         }
     }
 
+    & > a {
+        color: black;
+        transition: 0.2s;
+        text-decoration: none;
+
+        &:hover {
+            animation: spaceboots 2000ms infinite;
+            color: ${({ theme }) => theme.color.mediumGray};
+            transition: 0.2s;
+        }
+    }
+
     @keyframes spin {
         from {
             transform:rotate(0deg);
@@ -249,6 +261,20 @@ export const LoadingMoreBox = styled(FlexContainer)`
         to {
             transform:rotate(360deg);
         }
+    }
+
+    @keyframes spaceboots {
+        0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+        10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+        30% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
+        40% { -webkit-transform: translate(1px, -1px) rotate(1deg); }
+        50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { -webkit-transform: translate(-3px, 1px) rotate(0deg); }
+        70% { -webkit-transform: translate(2px, 1px) rotate(-1deg); }
+        80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); }
+        90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
+        100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
     }
 
     /* background-color: tomato; */

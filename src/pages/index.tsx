@@ -1,4 +1,4 @@
-import React, { FormEvent, useCallback, useEffect, useState, ChangeEvent, } from 'react';
+import React, { FormEvent, useCallback, useEffect, useState, ChangeEvent, useMemo, } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { 
@@ -38,65 +38,66 @@ import Typer from '../components/Typer';
 import Project from '../components/Project';
 import Modal from '../components/Modal';
 
+import projects from '../data/projects';
 
-const projects = [
-  {  
-    id: 1,  
-    title: "Marrey Sanchez",
-    description: "A website to a Brazilian traditional Lawer Office. There are shown the history of the office and they lawyers. The layout was build to demonstrate elegance and confiability.",
-    link: "http://marreysanchez.com.br",
-    technologies: ["html", "css", "javascript", "jquery"],
-    mockup: '',
-  },
-  {  
-    id: 2,  
-    title: "Vitrine Virtual",
-    description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
-    link: "http://vitrinevirtual.com.br",
-    technologies: ["nodejs", "react-native", "reactjs", "php", "mysql"],
-    mockup: '',
-  },
-  {  
-    id: 3,  
-    title: "Parcelamos Tudo",
-    description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
-    link: "http://parcelamostudo.com.br",
-    technologies: ["nodejs", "react-native", "reactjs", "docker"],
-    mockup: '',
-  },
-  {  
-    id: 4,  
-    title: "Parcelamos Tudo",
-    description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
-    link: "http://parcelamostudo.com.br",
-    technologies: ["nodejs", "react-native", "reactjs", "docker"],
-    mockup: '',
-  },
-  {  
-    id: 5,  
-    title: "Parcelamos Tudo",
-    description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
-    link: "http://parcelamostudo.com.br",
-    technologies: ["nodejs", "react-native", "reactjs", "docker"],
-    mockup: '',
-  },
-  {  
-    id: 6,  
-    title: "Parcelamos Tudo",
-    description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
-    link: "http://parcelamostudo.com.br",
-    technologies: ["nodejs", "react-native", "reactjs", "docker"],
-    mockup: '',
-  },
-  {  
-    id: 7,  
-    title: "Parcelamos Tudo",
-    description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
-    link: "http://parcelamostudo.com.br",
-    technologies: ["nodejs", "react-native", "reactjs", "docker"],
-    mockup: '',
-  },  
-]
+// const projects = [
+//   {  
+//     id: 1,  
+//     title: "Marrey Sanchez",
+//     description: "A website to a Brazilian traditional Lawer Office. There are shown the history of the office and they lawyers. The layout was build to demonstrate elegance and confiability.",
+//     link: "http://marreysanchez.com.br",
+//     technologies: ["html", "css", "javascript", "jquery"],
+//     mockup: '',
+//   },
+//   {  
+//     id: 2,  
+//     title: "Vitrine Virtual",
+//     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
+//     link: "http://vitrinevirtual.com.br",
+//     technologies: ["nodejs", "react-native", "reactjs", "php", "mysql"],
+//     mockup: '',
+//   },
+//   {  
+//     id: 3,  
+//     title: "Parcelamos Tudo",
+//     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
+//     link: "http://parcelamostudo.com.br",
+//     technologies: ["nodejs", "react-native", "reactjs", "docker"],
+//     mockup: '',
+//   },
+//   {  
+//     id: 4,  
+//     title: "Parcelamos Tudo",
+//     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
+//     link: "http://parcelamostudo.com.br",
+//     technologies: ["nodejs", "react-native", "reactjs", "docker"],
+//     mockup: '',
+//   },
+//   {  
+//     id: 5,  
+//     title: "Parcelamos Tudo",
+//     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
+//     link: "http://parcelamostudo.com.br",
+//     technologies: ["nodejs", "react-native", "reactjs", "docker"],
+//     mockup: '',
+//   },
+//   {  
+//     id: 6,  
+//     title: "Parcelamos Tudo",
+//     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
+//     link: "http://parcelamostudo.com.br",
+//     technologies: ["nodejs", "react-native", "reactjs", "docker"],
+//     mockup: '',
+//   },
+//   {  
+//     id: 7,  
+//     title: "Parcelamos Tudo",
+//     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
+//     link: "http://parcelamostudo.com.br",
+//     technologies: ["nodejs", "react-native", "reactjs", "docker"],
+//     mockup: '',
+//   },  
+// ]
 
 const projectsPerPage = 1;
 let arrayHoldingProjects = [];
@@ -125,6 +126,22 @@ export default function Home() {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+
+  const currentYear = useMemo(() => new Date(Date.now()).getFullYear(), []);
+
+  const howOlderIAm = useMemo(() => {
+    const currentTime = new Date(Date.now());
+    const years = currentYear - 1998;
+
+    const isAfterMyBirthday = new Date(currentTime.toDateString()) > new Date(new Date(currentTime.getFullYear(), 3, 27).toDateString());
+
+    // console.log('aniv: ', new Date(currentTime.getFullYear(), 3, 27).toDateString());
+    // console.log('current: ', currentTime.toDateString());
+
+    // console.log(isAfterMyBirthday);
+
+    return isAfterMyBirthday ? years : years - 1;
+  }, []);
 
   const sliceMoreProje = useCallback((start, end) => {
     const slicedProjects = projects.slice(start, end);
@@ -174,6 +191,12 @@ export default function Home() {
   const handleSendEmail = useCallback((event: FormEvent) => {
     event.preventDefault();
 
+    if (!email || !name || !message) {
+      alert("Please, insert a valid email, name and message!");
+
+      return;
+    }
+
     let body = `
       Hello Lucas! I am ${name}, I came to you through your portfolio, I would like to leave a message %0D%0A%0D%0A
 
@@ -215,7 +238,7 @@ export default function Home() {
 
         <NameAndTitle>
           <MontserratText size={100} weight="bold">
-            Lucas Leal, 22
+            Lucas Leal, {howOlderIAm}
           </MontserratText>
 
           <Typer 
@@ -237,9 +260,9 @@ export default function Home() {
             <FontAwesomeIcon icon={['fab', 'github']} />
           </LinkSocialMedia>
 
-          <LinkSocialMedia target="_blank" href="https://twitter.com/luquinha_txt">
+          {/* <LinkSocialMedia target="_blank" href="https://twitter.com/luquinha_txt">
             <FontAwesomeIcon icon={['fab', 'twitter']} />
-          </LinkSocialMedia>
+          </LinkSocialMedia> */}
 
           <LinkSocialMedia target="_blank" href="https://medium.com/@lucasleal.dev">
             <FontAwesomeIcon icon={['fab', 'medium-m']} />
@@ -288,31 +311,31 @@ export default function Home() {
             <KnowledgeTitle>Front-end</KnowledgeTitle>
 
             <KnowledgeItems>
+              <Item><strong>React Native</strong></Item>
+              <span>●</span>
+
+              <Item><strong>ReactJS</strong></Item>
+              <span>●</span>
+
+              <Item>Responsive Websites</Item>
+              <span>●</span>
+
               <Item><strong>HTML</strong></Item>
               <span>●</span>
 
               <Item><strong>CSS</strong></Item>
               <span>●</span>
 
-              <Item><strong>React Native</strong></Item>
+              <Item>Flexbox</Item>
               <span>●</span>
 
-              <Item>ReactJS</Item>
+              <Item><strong>JQuery</strong></Item>
               <span>●</span>
 
-              <Item>Responsive Websites</Item>
-              <span>●</span>
-
-              <Item><strong>Flexbox</strong></Item>
-              <span>●</span>
-
-              <Item>JQuery</Item>
-              <span>●</span>
-
-              <Item><strong>Bootstrap</strong></Item>
+              <Item>Bootstrap</Item>
             </KnowledgeItems>
           </KnowledgeLine>
-        
+      
           <KnowledgeLine>
             <KnowledgeTitle>Back-end</KnowledgeTitle>
 
@@ -321,9 +344,6 @@ export default function Home() {
               <span>●</span>
 
               <Item><strong>MySQL</strong></Item>
-              <span>●</span>
-
-              <Item>Docker</Item>
               <span>●</span>
 
               <Item>Postgres</Item>
@@ -335,6 +355,28 @@ export default function Home() {
               <Item>Redis</Item>
             </KnowledgeItems>
           </KnowledgeLine>
+        
+          <KnowledgeLine>
+            <KnowledgeTitle>Others</KnowledgeTitle>
+
+            <KnowledgeItems>
+              <Item><strong>Git</strong></Item>
+              <span>●</span>
+
+              <Item>Docker</Item>
+              <span>●</span>
+
+              <Item>AWS S3</Item>
+              <span>●</span>
+
+              <Item><strong>Heroku</strong></Item>
+              <span>●</span>              
+
+              <Item>Netlify</Item>
+              <span>●</span>
+            </KnowledgeItems>
+          </KnowledgeLine>
+     
         </KnowledgeBox>
       </About>
 
@@ -358,7 +400,14 @@ export default function Home() {
         </ProjectsBox>
 
         <LoadingMoreBox onClick={handleShowMoreProjects}>
-          <VidalokaText size={48}>+</VidalokaText>
+          {
+            projectsToShow.length === projects.length ?
+            <a target="_blank" href="https://github.com/lucasvleal">
+              <VidalokaText size={24}>see more on github</VidalokaText>
+            </a>
+            :
+            <VidalokaText size={48}>+</VidalokaText>
+          }
         </LoadingMoreBox>
       </Work>
 
@@ -423,7 +472,7 @@ export default function Home() {
       </Contact>
     
       <Footer>
-        <RegularText weight="bold" color="#FFFFFF">Copyright © Lucas Leal 2021</RegularText>
+        <RegularText weight="bold" color="#FFFFFF">Copyright © Lucas Leal {currentYear}</RegularText>
 
         <LinksFooterBox>
           <LinkSocialMedia target="_blank" href="https://www.linkedin.com/in/lucas-viani-leal/">
@@ -434,9 +483,9 @@ export default function Home() {
             <FontAwesomeIcon icon={['fab', 'github']} />
           </LinkSocialMedia>
 
-          <LinkSocialMedia target="_blank" href="https://twitter.com/luquinha_txt">
+          {/* <LinkSocialMedia target="_blank" href="https://twitter.com/luquinha_txt">
             <FontAwesomeIcon icon={['fab', 'twitter']} />
-          </LinkSocialMedia>
+          </LinkSocialMedia> */}
 
           <LinkSocialMedia target="_blank" href="https://medium.com/@lucasleal.dev">
             <FontAwesomeIcon icon={['fab', 'medium-m']} />

@@ -21,6 +21,7 @@ export default function IconTechnology({ technology }: Props) {
                 width={32}
                 height={32}
                 layout="responsive"
+                priority
             />
 
             <div id="tooltip">

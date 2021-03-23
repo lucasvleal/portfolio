@@ -7,7 +7,7 @@ interface TextProps {
 }
 
 export const Regular = styled.span<TextProps>`
-    font-family: ${({ theme }) => theme.font.principal};
+    font-family: ${({ theme }) => theme.font.principal}, 'Segoe UI', Tahoma, Geneva, sans-serif;
 
     font-size: ${(props) => props.customSize + 'px'};
     font-weight: ${(props) => props.customWeight};
@@ -19,7 +19,7 @@ export const Regular = styled.span<TextProps>`
 `;
 
 export const Vidaloka = styled.span<TextProps>`
-    font-family: ${({ theme }) => theme.font.title};
+    font-family: ${({ theme }) => theme.font.title}, 'Times New Roman', Times, serif;
 
     font-size: ${(props) => props.customSize + 'px'};
     font-weight: ${(props) => props.customWeight};
@@ -31,7 +31,7 @@ export const Vidaloka = styled.span<TextProps>`
 `;
 
 export const Montserrat = styled.span<TextProps>`
-    font-family: ${({ theme }) => theme.font.secundary};
+    font-family: ${({ theme }) => theme.font.secundary}, 'Lucida Sans', Verdana, sans-serif;
 
     font-size: ${(props) => props.customSize + 'px'};
     font-weight: ${(props) => props.customWeight};

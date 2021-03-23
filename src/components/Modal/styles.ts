@@ -41,6 +41,7 @@ export const Container = styled.div`
     @media (max-width: 768px) {
 	    top: 2.5%;
         height: 95vh;
+        padding: 4vh 4vw;
     }
 `;
 
@@ -48,7 +49,7 @@ export const Header = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex: 0.2;
+    flex: 0.15;
 
     /* height: 15vh; */
     width: 100%;
@@ -59,6 +60,8 @@ export const Header = styled.div`
             text-align: center;
         }
     }
+
+    /* background: red; */
 `;
 
 export const BoxClose = styled.div`
@@ -88,12 +91,17 @@ export const BoxClose = styled.div`
 export const DescriptionAndMockupBox = styled.div`
     display: flex;
     align-items: center;
-    flex: 0.55;
+    flex: 0.6;
 
     width: 95%;
 
     @media (max-width: 768px) {
-	    flex-direction: column;
+	    /* flex-direction: column; */
+        align-items: center;
+        justify-content: center;
+        /* padding: 0 20px; */
+        width: 100%;
+
     }
 
     /* background: tomato; */
@@ -107,6 +115,10 @@ export const MockupBox = styled.div`
 
     /* width: 150px;
     height: 150px; */
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 
     background: blue;
 `;
@@ -127,14 +139,19 @@ export const DescriptionBox = styled.div`
     }
 
     @media (max-width: 768px) {
+        align-items: center;
+
 	    span {
             font-size: 14px;
             line-height: 22px;
             text-align: center;
+            width: 80%;
         }
 
         a {
             font-size: 14px;
+            /* width: 20px; */
+
             text-align: center;
         }
     }
@@ -147,6 +164,15 @@ export const LinkBox = styled.div`
     flex-direction: column;
 
     margin-top: 4vh;
+
+    @media (max-width: 768px) {
+        align-items: center;
+
+        a {
+            font-size: 12px;
+            /* width: 80%; */
+        }
+    }
 `;
 
 export const TechnologiesBox = styled.div`
@@ -173,4 +199,10 @@ export const TechnologiesBox = styled.div`
 export const IconsTechnologies = styled.div`
     display: flex;
     align-items: center;
+
+    @media (max-width: 768px) {
+        justify-content: center;
+        flex-wrap: wrap;
+        row-gap: 1vh;
+    }
 `;
