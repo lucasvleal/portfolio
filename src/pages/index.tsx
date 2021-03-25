@@ -38,7 +38,7 @@ import Typer from '../components/Typer';
 import Project from '../components/Project';
 import Modal from '../components/Modal';
 
-import projects from '../data/projects';
+import projects, { IProject } from '../data/projects';
 
 // const projects = [
 //   {  
@@ -102,15 +102,6 @@ import projects from '../data/projects';
 const projectsPerPage = 1;
 let arrayHoldingProjects = [];
 
-interface IProject {
-    id: number;
-    title: string;
-    description: string;
-    link: string;
-    technologies: string[];
-    mockup: string;
-}
-
 export default function Home() {
   const [projectsToShow, setProjectsToShow] = useState([]);
   const [next, setNext] = useState(3);
@@ -118,7 +109,7 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [projectTitle, setProjectTitle] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
-  const [projectLink, setProjectLink] = useState('');
+  const [projectLinks, setProjectLinks] = useState([]);
   const [projectTechnologies, setProjectTechnologies] = useState([]);
   const [projectMockup, setProjectMockup] = useState('');
 
@@ -163,7 +154,7 @@ export default function Home() {
   const handleOpenModalProject = useCallback((project: IProject) => {
     setProjectTitle(project.title);
     setProjectDescription(project.description);
-    setProjectLink(project.link);
+    setProjectLinks(project.link);
     setProjectTechnologies(project.technologies);
     setProjectMockup(project.mockup);
 
@@ -497,7 +488,7 @@ export default function Home() {
         open={isModalOpen}
         title={projectTitle}
         description={projectDescription}
-        link={projectLink}
+        links={projectLinks}
         technologies={projectTechnologies}
         mockupLink={projectMockup}
         handleCloseModal={() => setIsModalOpen(false)}

@@ -22,7 +22,7 @@ interface Props {
     open: boolean;
     title: string;
     description?: string;
-    link?: string;
+    links?: string[];
     technologies?: string[];
     mockupLink?: string;
     handleCloseModal: () => void;
@@ -33,7 +33,7 @@ const variants = {
     visible: { y:0, opacity: 1 },
   }
 
-export default function Modal({ open, title, description, technologies, mockupLink, link, handleCloseModal }: Props) {
+export default function Modal({ open, title, description, technologies, mockupLink, links, handleCloseModal }: Props) {
     return (
         <Background 
             show={open}            
@@ -57,13 +57,14 @@ export default function Modal({ open, title, description, technologies, mockupLi
                 
                 <DescriptionAndMockupBox>
                     <MockupBox>
-                        <Image 
-                            src={'/placeholder-image.png'} 
+                        {/* <Image 
+                            src={`/${mockupLink}`} 
                             alt={`Mockup of ${title}`}
-                            width={32}
-                            height={32}
+                            width={300}
+                            height={300}
                             layout="responsive"
-                        />
+                        /> */}
+                        <img src={`/${mockupLink}`} height={300} width={"100%"} alt=""/>
                     </MockupBox>
 
                     <DescriptionBox>
@@ -72,8 +73,15 @@ export default function Modal({ open, title, description, technologies, mockupLi
                         </RegularText>
 
                         <LinkBox>
-                            <MontserratText size={16} weight="900">LINK</MontserratText>
-                            <a target="_blank" href={link}>{link}</a>
+                            <MontserratText size={16} weight="900">
+                                {links.length > 1 ? 'LINKS' : 'LINK'}
+                            </MontserratText>
+                            
+                            { 
+                                links.map((link) => (
+                                    <a target="_blank" href={link}>{link}</a>
+                                ))
+                            }
                         </LinkBox>
                     </DescriptionBox>
                 </DescriptionAndMockupBox>

@@ -155,7 +155,7 @@ export const AboutBox = styled.div`
 `;
 
 export const KnowledgeBox = styled.div`
-    padding-top: 40px;
+    padding-top: 20px;
 
     /* background: blue; */
 

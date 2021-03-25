@@ -113,8 +113,12 @@ export const MockupBox = styled.div`
     align-items: center;
     flex: 1;
 
-    /* width: 150px;
-    height: 150px; */
+    width: 100%;
+    height: 100%;
+
+    & > img {
+        object-fit: cover;
+    }
 
     @media (max-width: 768px) {
         display: none;
