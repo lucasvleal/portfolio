@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Image from 'next/image';
 
 import IconTechnology from '../IconTechnology';
 import { MontserratText, RegularText, VidalokaText } from '../Texts';
@@ -28,22 +27,12 @@ interface Props {
     handleCloseModal: () => void;
 }
 
-const variants = {
-    hidden: { y: -100, opacity: 0 },
-    visible: { y:0, opacity: 1 },
-  }
-
 export default function Modal({ open, title, description, technologies, mockupLink, links, handleCloseModal }: Props) {
     return (
         <Background 
             show={open}            
         >
             <Container
-            // initial="hidden"
-            // // animate={open ? { y:0 } : "hidden"}          
-            // animate={open ? "visible" : "hidden"}          
-            // // variants={variants}  
-            // transition={{ ease: "easeOut", duration: 2 }} 
             >
                 <Header>
                     <div></div>
@@ -57,13 +46,6 @@ export default function Modal({ open, title, description, technologies, mockupLi
                 
                 <DescriptionAndMockupBox>
                     <MockupBox>
-                        {/* <Image 
-                            src={`/${mockupLink}`} 
-                            alt={`Mockup of ${title}`}
-                            width={300}
-                            height={300}
-                            layout="responsive"
-                        /> */}
                         <img src={`/${mockupLink}`} height={300} width={"100%"} alt=""/>
                     </MockupBox>
 

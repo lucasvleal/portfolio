@@ -42,6 +42,8 @@ export const Container = styled.div`
 	    top: 2.5%;
         height: 95vh;
         padding: 4vh 4vw;
+
+        overflow-y: scroll;
     }
 `;
 
@@ -96,7 +98,7 @@ export const DescriptionAndMockupBox = styled.div`
     width: 95%;
 
     @media (max-width: 768px) {
-	    /* flex-direction: column; */
+	    flex-direction: column;
         align-items: center;
         justify-content: center;
         /* padding: 0 20px; */
@@ -121,10 +123,14 @@ export const MockupBox = styled.div`
     }
 
     @media (max-width: 768px) {
-        display: none;
+        & > img {
+            width: 100%;
+            height: 100%;
+        }
+        /* display: none; */
     }
 
-    background: blue;
+    /* background: blue; */
 `;
 
 export const DescriptionBox = styled.div`
@@ -187,6 +193,7 @@ export const TechnologiesBox = styled.div`
     flex: 0.25;
 
     @media (max-width: 768px) {
+        margin-top: 2vh;
         justify-content: center;
 
 	    span {

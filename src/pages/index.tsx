@@ -37,67 +37,9 @@ import { MontserratText, VidalokaText, RegularText } from '../components/Texts';
 import Typer from '../components/Typer';
 import Project from '../components/Project';
 import Modal from '../components/Modal';
+import SEO from '../components/SEO';
 
 import projects, { IProject } from '../data/projects';
-
-// const projects = [
-//   {  
-//     id: 1,  
-//     title: "Marrey Sanchez",
-//     description: "A website to a Brazilian traditional Lawer Office. There are shown the history of the office and they lawyers. The layout was build to demonstrate elegance and confiability.",
-//     link: "http://marreysanchez.com.br",
-//     technologies: ["html", "css", "javascript", "jquery"],
-//     mockup: '',
-//   },
-//   {  
-//     id: 2,  
-//     title: "Vitrine Virtual",
-//     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
-//     link: "http://vitrinevirtual.com.br",
-//     technologies: ["nodejs", "react-native", "reactjs", "php", "mysql"],
-//     mockup: '',
-//   },
-//   {  
-//     id: 3,  
-//     title: "Parcelamos Tudo",
-//     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
-//     link: "http://parcelamostudo.com.br",
-//     technologies: ["nodejs", "react-native", "reactjs", "docker"],
-//     mockup: '',
-//   },
-//   {  
-//     id: 4,  
-//     title: "Parcelamos Tudo",
-//     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
-//     link: "http://parcelamostudo.com.br",
-//     technologies: ["nodejs", "react-native", "reactjs", "docker"],
-//     mockup: '',
-//   },
-//   {  
-//     id: 5,  
-//     title: "Parcelamos Tudo",
-//     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
-//     link: "http://parcelamostudo.com.br",
-//     technologies: ["nodejs", "react-native", "reactjs", "docker"],
-//     mockup: '',
-//   },
-//   {  
-//     id: 6,  
-//     title: "Parcelamos Tudo",
-//     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
-//     link: "http://parcelamostudo.com.br",
-//     technologies: ["nodejs", "react-native", "reactjs", "docker"],
-//     mockup: '',
-//   },
-//   {  
-//     id: 7,  
-//     title: "Parcelamos Tudo",
-//     description: "In this project, I create a virtual showcase there’s the owner can, by the Admin Dashboard, add categories and products to each of them, and provide the infos (price, photo, description) about the products",
-//     link: "http://parcelamostudo.com.br",
-//     technologies: ["nodejs", "react-native", "reactjs", "docker"],
-//     mockup: '',
-//   },  
-// ]
 
 const projectsPerPage = 1;
 let arrayHoldingProjects = [];
@@ -206,6 +148,12 @@ export default function Home() {
 
   return (
     <Container>
+      <SEO 
+        title={`Lucas Leal, ${howOlderIAm}`}
+        description=""
+        shouldExcludeTitleSuffix
+      />
+
       <Greeting>
         <Header>
           <ItemNav href="#about">
@@ -394,7 +342,7 @@ export default function Home() {
           {
             projectsToShow.length === projects.length ?
             <a target="_blank" href="https://github.com/lucasvleal">
-              <VidalokaText size={24}>see more on github</VidalokaText>
+              <VidalokaText size={24}>see much more on github</VidalokaText>
             </a>
             :
             <VidalokaText size={48}>+</VidalokaText>
