@@ -64,14 +64,10 @@ export default function Home() {
 
   const howOlderIAm = useMemo(() => {
     const currentTime = new Date(Date.now());
-    const years = currentYear - 1998;
+    const yearIBorn = 1998;
+    const years = currentYear - yearIBorn;
 
-    const isAfterMyBirthday = new Date(currentTime.toDateString()) > new Date(new Date(currentTime.getFullYear(), 3, 27).toDateString());
-
-    // console.log('aniv: ', new Date(currentTime.getFullYear(), 3, 27).toDateString());
-    // console.log('current: ', currentTime.toDateString());
-
-    // console.log(isAfterMyBirthday);
+    const isAfterMyBirthday = new Date(currentTime.toDateString()) >= new Date(new Date(currentTime.getFullYear(), 2, 27).toDateString());
 
     return isAfterMyBirthday ? years : years - 1;
   }, []);
@@ -150,7 +146,7 @@ export default function Home() {
     <Container>
       <SEO 
         title={`Lucas Leal, ${howOlderIAm}`}
-        description=""
+        description="Portfolio site of the Full Stack and Mobile developer Lucas Leal."
         shouldExcludeTitleSuffix
       />
 
