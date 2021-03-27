@@ -213,9 +213,9 @@ export default function Home() {
         <AboutBox>
           Hi! I’m <strong>Lucas Leal</strong>, student of Computer Science on a great University in Brazil, UNESP.
           <br /><br />
-          I’m a FullStack Javascript Developer, who <strong>loves</strong> Front-end and principally Mobile development, with 
-          strong knowledge in <strong>ReactJS</strong> and <strong>React Native</strong>.  I’ve always studying and practicing my skills in Back-end, 
-          with <strong>Node.js</strong>, to keep growing and be a better dev tomorrow than I was yesterday.
+          I’m a FullStack Javascript Developer, who <strong>loves</strong> Front-end mainly Mobile development, with 
+          strong knowledge in <strong>ReactJS</strong> and <strong>React Native</strong>.  I’ve always studied and practice my skills in Back-end, 
+          principally with <strong>Node.js</strong>, to keep growing and being a better dev tomorrow than I was yesterday.
         </AboutBox>
       
         <KnowledgeBox>
