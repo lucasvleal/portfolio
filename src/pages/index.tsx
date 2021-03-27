@@ -143,7 +143,7 @@ export default function Home() {
 
     const mailTo = `mailto:lucasleal.dev@gmail.com?subject=Contact%20From%20Portfolio&body=${body}`;
 
-    window.location = mailTo;
+    window.location.href = mailTo;
   }, [name, phone, email, message]);
 
   return (
