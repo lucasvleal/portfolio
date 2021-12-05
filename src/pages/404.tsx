@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MontserratText, RegularText } from '../components/Texts';
+import { MontserratText, RegularText } from '../components/general/Texts';
 
 import { Container } from '../styles/pages/404';
 

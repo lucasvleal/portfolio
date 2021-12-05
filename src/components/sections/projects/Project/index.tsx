@@ -1,7 +1,7 @@
 import React, { DOMAttributes, HTMLAttributes, useEffect, useState } from 'react';
 import AndOthers from '../AndOthers';
 import IconTechnology from '../IconTechnology';
-import { MontserratText, VidalokaText } from '../Texts';
+import { MontserratText, VidalokaText } from '../../../general/Texts';
 
 import { 
     Container,

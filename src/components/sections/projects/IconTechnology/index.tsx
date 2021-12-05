@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-import { MontserratText } from '../Texts';
+import { MontserratText } from '../../../general/Texts';
 
 import { 
     Container,

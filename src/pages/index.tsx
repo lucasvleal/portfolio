@@ -33,10 +33,10 @@ import {
   LinksFooterBox,
 } from '../styles/pages/Home';
 
-import { MontserratText, VidalokaText, RegularText } from '../components/Texts';
-import Typer from '../components/Typer';
-import Project from '../components/Project';
-import Modal from '../components/Modal';
+import { MontserratText, VidalokaText, RegularText } from '../components/general/Texts';
+import Typer from '../components/sections/greeting/Typer';
+import Project from '../components/sections/projects/Project';
+import Modal from '../components/general/Modal';
 import SEO from '../components/SEO';
 
 import projects, { IProject } from '../data/projects';

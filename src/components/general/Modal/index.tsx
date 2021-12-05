@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import IconTechnology from '../IconTechnology';
+import IconTechnology from '../../sections/projects/IconTechnology';
 import { MontserratText, RegularText, VidalokaText } from '../Texts';
 
 import { 
