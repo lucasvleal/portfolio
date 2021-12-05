@@ -37,7 +37,7 @@ export default function GreetingSection() {
 
                 <Typer 
                     texts={[
-                    "FullStack Javascript Developer.", 
+                    "Software Engineer.",
                     "Front-end lover.", 
                     "Mobile enthusiast.",
                     "Passionate about sports and technology."

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import { FlexContainer } from '../../../../styles/GeneralComponents';
 
+import theme from '../../../../styles/themes/principal'
+
 export const About = styled.div`
     min-height: 100vh;
     padding: 0 ${({ theme }) => theme.size.padding.horizontalContainer};
@@ -26,8 +28,24 @@ export const AboutBox = styled.div`
     /* background-color: red; */
 `;
 
+export const WorkPlaceLink = styled.a`
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+    border-bottom: 1px dotted ${theme.color.mediumGray};
+    font-weight: bold;
+
+    &:hover {
+        border-bottom: 2px solid black;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+    }
+`;
+
 export const KnowledgeBox = styled.div`
-    padding-top: 20px;
+    padding-top: 12px;
 
     /* background: blue; */
 

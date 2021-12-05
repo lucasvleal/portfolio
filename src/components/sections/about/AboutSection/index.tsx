@@ -3,6 +3,7 @@ import React from 'react';
 import { 
     About,
     AboutBox,
+    WorkPlaceLink,
     KnowledgeBox,
     KnowledgeLine,
     KnowledgeTitle,
@@ -18,11 +19,16 @@ export default function AboutSection() {
             <TitleBox title="about" />
 
             <AboutBox>
-                Hi! I’m <strong>Lucas Leal</strong>, student of Computer Science on a great University in Brazil, UNESP.
-                <br /><br />
-                I’m a FullStack Javascript Developer, who <strong>loves</strong> Front-end mainly Mobile development, with 
-                strong knowledge in <strong>ReactJS</strong> and <strong>React Native</strong>.  I’ve always studied and practice my skills in Back-end, 
-                principally with <strong>Node.js</strong>, to keep growing and being a better dev tomorrow than I was yesterday.
+                Hello there! I’m <strong>Lucas Leal</strong>, a Brazilian Bachelor of Computer Science and a Software Engineer 
+                currently working 
+                at <WorkPlaceLink target="_blank" href="https://trio.dev">Trio Developers</WorkPlaceLink>.
+
+                <div style={{ marginTop: '16px' }}>
+                    I <strong>love</strong> the front-end and mobile development, with 
+                    strong knowledge in <strong>ReactJS</strong> and <strong>React Native</strong>.  I’ve always studied and 
+                    practice my skills in back-end, principally with <strong>Node.js</strong>, to keep growing and being a better 
+                    dev tomorrow than I was yesterday.
+                </div>
             </AboutBox>
         
             <KnowledgeBox>
@@ -53,28 +59,28 @@ export default function AboutSection() {
                     <KnowledgeTitle>Front-end</KnowledgeTitle>
 
                     <KnowledgeItems>
-                    <Item><strong>React Native</strong></Item>
-                    <span>●</span>
+                        <Item><strong>React Native</strong></Item>
+                        <span>●</span>
 
-                    <Item><strong>ReactJS</strong></Item>
-                    <span>●</span>
+                        <Item><strong>ReactJS</strong></Item>
+                        <span>●</span>
 
-                    <Item>Responsive Websites</Item>
-                    <span>●</span>
+                        <Item><strong>Responsive Websites</strong></Item>
+                        <span>●</span>
 
-                    <Item><strong>HTML</strong></Item>
-                    <span>●</span>
+                        <Item>HTML</Item>
+                        <span>●</span>
 
-                    <Item><strong>CSS</strong></Item>
-                    <span>●</span>
+                        <Item>CSS</Item>
+                        <span>●</span>
 
-                    <Item>Flexbox</Item>
-                    <span>●</span>
+                        <Item><strong>Flexbox</strong></Item>
+                        <span>●</span>
 
-                    <Item><strong>JQuery</strong></Item>
-                    <span>●</span>
+                        <Item>JQuery</Item>
+                        <span>●</span>
 
-                    <Item>Bootstrap</Item>
+                        <Item>Bootstrap</Item>
                     </KnowledgeItems>
                 </KnowledgeLine>
             
@@ -82,19 +88,22 @@ export default function AboutSection() {
                     <KnowledgeTitle>Back-end</KnowledgeTitle>
 
                     <KnowledgeItems>
-                    <Item><strong>Node.js</strong></Item>
-                    <span>●</span>
+                        <Item><strong>Node.js</strong></Item>
+                        <span>●</span>
 
-                    <Item><strong>MySQL</strong></Item>
-                    <span>●</span>
+                        <Item><strong>MySQL</strong></Item>
+                        <span>●</span>
 
-                    <Item>Postgres</Item>
-                    <span>●</span>
+                        <Item><strong>Postgres</strong></Item>
+                        <span>●</span>
 
-                    <Item>MongoDB</Item>
-                    <span>●</span>
+                        <Item>GraphQL</Item>
+                        <span>●</span>
 
-                    <Item>Redis</Item>
+                        <Item>MongoDB</Item>
+                        <span>●</span>
+
+                        <Item>Redis</Item>
                     </KnowledgeItems>
                 </KnowledgeLine>
                 
@@ -102,20 +111,19 @@ export default function AboutSection() {
                     <KnowledgeTitle>Others</KnowledgeTitle>
 
                     <KnowledgeItems>
-                    <Item><strong>Git</strong></Item>
-                    <span>●</span>
+                        <Item><strong>Git</strong></Item>
+                        <span>●</span>
 
-                    <Item>Docker</Item>
-                    <span>●</span>
+                        <Item>Docker</Item>
+                        <span>●</span>                    
 
-                    <Item>AWS S3</Item>
-                    <span>●</span>
+                        <Item>AWS S3</Item>
+                        <span>●</span>
 
-                    <Item><strong>Heroku</strong></Item>
-                    <span>●</span>              
+                        <Item><strong>Heroku</strong></Item>
+                        <span>●</span>              
 
-                    <Item>Netlify</Item>
-                    <span>●</span>
+                        <Item>Netlify</Item>
                     </KnowledgeItems>
                 </KnowledgeLine>            
             </KnowledgeBox>
