@@ -1,8 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import IconTechnology from '../../sections/projects/IconTechnology';
-import { MontserratText, RegularText, VidalokaText } from '../Texts';
+import IconTechnology from '../IconTechnology';
+import { MontserratText, RegularText, VidalokaText } from '../../../general/Texts';
 
 import { 
     Background,
@@ -16,12 +16,15 @@ import {
     TechnologiesBox,
     IconsTechnologies,
 } from './styles';
+import CustomLink from '../../../general/CustomLink';
+import theme from '../../../../styles/themes/principal';
+import { ILink } from '../../../../data/projects';
 
 interface Props {
     open: boolean;
     title: string;
     description?: string;
-    links?: string[];
+    links?: ILink[];
     technologies?: string[];
     mockupLink?: string;
     handleCloseModal: () => void;
@@ -55,13 +58,21 @@ export default function Modal({ open, title, description, technologies, mockupLi
                         </RegularText>
 
                         <LinkBox>
-                            <MontserratText size={16} weight="900">
+                            <MontserratText size={14} weight="900">
                                 {links.length > 1 ? 'LINKS' : 'LINK'}
                             </MontserratText>
                             
                             { 
                                 links.map((link) => (
-                                    <a target="_blank" href={link}>{link}</a>
+                                    <div style={{ marginBottom: '8px' }}>
+                                        <CustomLink 
+                                            url={link.url}
+                                            title={link.title}
+                                            target="_blank"
+                                            bold={false}
+                                            color={theme.color.mediumGray}
+                                        />
+                                    </div>
                                 ))
                             }
                         </LinkBox>

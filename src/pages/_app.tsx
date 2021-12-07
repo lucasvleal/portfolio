@@ -3,13 +3,16 @@ import { ThemeProvider } from 'styled-components';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faUser, faEnvelope, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 
 import GlobalStyle from '../styles/GlobalStyle';
 import theme from '../styles/themes/principal';
 import Head from 'next/head';
 
 library.add(fab, faTimes);
+library.add(fab, faUser);
+library.add(fab, faEnvelope);
+library.add(fab, faPhoneAlt);
 
 export default function MyApp({ Component, pageProps }) {
   return (

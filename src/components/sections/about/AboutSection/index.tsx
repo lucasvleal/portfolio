@@ -3,7 +3,6 @@ import React from 'react';
 import { 
     About,
     AboutBox,
-    WorkPlaceLink,
     KnowledgeBox,
     KnowledgeLine,
     KnowledgeTitle,
@@ -12,6 +11,7 @@ import {
 } from './styles';
 
 import TitleBox from '../../../general/TitleBox';
+import CustomLink from '../../../general/CustomLink';
 
 export default function AboutSection() {
     return (
@@ -21,13 +21,13 @@ export default function AboutSection() {
             <AboutBox>
                 Hello there! I’m <strong>Lucas Leal</strong>, a Brazilian Bachelor of Computer Science and a Software Engineer 
                 currently working 
-                at <WorkPlaceLink target="_blank" href="https://trio.dev">Trio Developers</WorkPlaceLink>.
+                at <CustomLink target="_blank" url="https://trio.dev" title="Trio Developers" />.
 
                 <div style={{ marginTop: '16px' }}>
-                    I <strong>love</strong> the front-end and mobile development, with 
-                    strong knowledge in <strong>ReactJS</strong> and <strong>React Native</strong>.  I’ve always studied and 
-                    practice my skills in back-end, principally with <strong>Node.js</strong>, to keep growing and being a better 
-                    dev tomorrow than I was yesterday.
+                    I <strong>love</strong> the front-end and mobile development, and I have a 
+                    strong knowledge in <strong>ReactJS</strong> and <strong>React Native</strong>. I'm 
+                    always studing and practicing my skills in the back-end, principally with <strong>Node.js</strong>, 
+                    to keep growing and being a better dev tomorrow than I was yesterday.
                 </div>
             </AboutBox>
         

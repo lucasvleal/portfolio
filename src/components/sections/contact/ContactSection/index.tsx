@@ -1,10 +1,12 @@
-import React, { ChangeEvent, FormEvent, useCallback, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useCallback, useState, useRef, useMemo } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { 
     Contact,
     ContactFormBox,
     Form,
     FormRow,
+    InputGroup,
     ContainerInput,
     Input,
     TextArea,
@@ -20,6 +22,11 @@ export default function ContactSection() {
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+
+    const isNameInputColorized = useMemo(() => name !== '', [name]);
+    const isPhoneInputColorized = useMemo(() => phone !== '', [phone]);
+    const isEmailInputColorized = useMemo(() => email !== '', [email]);
+    const isMessageInputColorized = useMemo(() => message !== '', [message]);
 
     const handleChangeName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
@@ -69,48 +76,75 @@ export default function ContactSection() {
             <ContactFormBox>
                 <Form>
                     <FormRow>
-                        <ContainerInput>
-                            <label htmlFor="name">NAME <MontserratText color="tomato" weight="600">*</MontserratText></label>
-                            <Input 
-                            id="name" 
-                            type="text" 
-                            placeholder="Your name here..." 
-                            onChange={handleChangeName}
-                            required 
-                            />
-                        </ContainerInput>
+                        <InputGroup>
+                            <label htmlFor="name">
+                                NAME <MontserratText color="tomato" weight="600">*</MontserratText>
+                            </label>
 
-                        <ContainerInput>
+                            <ContainerInput colorized={isNameInputColorized}>
+                                <FontAwesomeIcon icon="user" />
+
+                                <Input 
+                                    id="name" 
+                                    type="text" 
+                                    placeholder="Your name here..." 
+                                    onChange={handleChangeName}
+                                    required 
+                                />
+                            </ContainerInput>
+                        </InputGroup>
+
+                        <InputGroup>
                             <label htmlFor="phone">PHONE</label>
-                            <Input 
-                            id="phone" 
-                            type="text" 
-                            placeholder="Your phone here..."
-                            onChange={handleChangePhone}
-                            />
-                        </ContainerInput>
+                            
+                            <ContainerInput colorized={isPhoneInputColorized}>
+                                <FontAwesomeIcon icon="phone-alt" />
+
+                                <Input 
+                                    id="phone" 
+                                    type="text" 
+                                    placeholder="Your phone here..."
+                                    onChange={handleChangePhone}
+                                />
+                            </ContainerInput>
+                        </InputGroup>
                     </FormRow>
 
-                    <ContainerInput>
-                        <label htmlFor="email">EMAIL <MontserratText color="tomato" weight="600">*</MontserratText></label>
-                        <Input 
-                            id="email" 
-                            type="text" 
-                            placeholder="Your email here..." 
-                            onChange={handleChangeEmail}
-                            required 
-                        />
-                    </ContainerInput>
+                    <FormRow>
+                        <InputGroup>
+                            <label htmlFor="email">
+                                EMAIL <MontserratText color="tomato" weight="600">*</MontserratText>
+                            </label>
 
-                    <ContainerInput>
-                        <label htmlFor="message">MESSAGE <MontserratText color="tomato" weight="600">*</MontserratText></label>
-                        <TextArea 
-                            id="message" 
-                            placeholder="Your message here..."
-                            onChange={handleChangeMessage}
-                            required 
-                        ></TextArea>
-                    </ContainerInput>
+                            <ContainerInput colorized={isEmailInputColorized}>
+                                <FontAwesomeIcon icon="envelope" />
+
+                                <Input 
+                                    id="email" 
+                                    type="text" 
+                                    placeholder="Your email here..." 
+                                    onChange={handleChangeEmail}
+                                    required 
+                                />
+                            </ContainerInput>
+                        </InputGroup>
+                    </FormRow>
+
+                    <FormRow>
+                        <InputGroup>
+                            <label htmlFor="message">
+                                MESSAGE <MontserratText color="tomato" weight="600">*</MontserratText>
+                            </label>
+
+                            <TextArea
+                                colorized={isMessageInputColorized}
+                                id="message" 
+                                placeholder="Your message here..."
+                                onChange={handleChangeMessage}
+                                required 
+                            ></TextArea>
+                        </InputGroup>
+                    </FormRow>
 
                     <ButtonBox>
                         <ButtonSend onClick={handleSendEmail}>

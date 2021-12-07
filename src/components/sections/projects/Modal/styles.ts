@@ -138,7 +138,7 @@ export const DescriptionBox = styled.div`
     flex-direction: column;
     flex: 1;
 
-    a { 
+    /* a { 
         color: #ACACAC;
         transition: 0.2s;
 
@@ -146,7 +146,7 @@ export const DescriptionBox = styled.div`
             color: ${({ theme }) => theme.color.mediumGray};
             transition: 0.2s;
         }
-    }
+    } */
 
     @media (max-width: 768px) {
         align-items: center;
@@ -170,10 +170,14 @@ export const DescriptionBox = styled.div`
 `;
 
 export const LinkBox = styled.div`
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 
     margin-top: 4vh;
+
+    & > a {
+        margin-top: 14px;
+    }
 
     @media (max-width: 768px) {
         align-items: center;

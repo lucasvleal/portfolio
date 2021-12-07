@@ -6,12 +6,12 @@ import { IProject } from '../data/projects';
 
 import SEO from '../components/SEO';
 
-import Modal from '../components/general/Modal';
 import Footer from '../components/general/Footer';
 
 import GreetingSection from '../components/sections/greeting/GreetingSection';
 import AboutSection from '../components/sections/about/AboutSection';
 import ProjectsSection from '../components/sections/projects/ProjectsSection';
+import Modal from '../components/sections/projects/Modal';
 import ContactSection from '../components/sections/contact/ContactSection';
 
 export default function Home() {

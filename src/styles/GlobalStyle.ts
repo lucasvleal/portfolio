@@ -23,6 +23,7 @@ export default createGlobalStyle`
 
         &::-webkit-scrollbar-thumb {
             background: #000;
+            border-left: 1px solid rgba(255,255,255,0.2);
         }
     }
     
