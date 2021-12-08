@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-scroll';
 
 import { FlexContainer } from '../../../styles/GeneralComponents';
 
@@ -14,7 +15,7 @@ export const Container = styled(FlexContainer)`
     /* background: blue; */
 `;
 
-export const ItemNav = styled.a`
+export const ItemNav = styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;

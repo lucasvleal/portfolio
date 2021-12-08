@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent, useCallback, useState, useRef, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { types, useAlert } from 'react-alert';
 
 import { 
     Contact,
@@ -18,6 +19,8 @@ import TitleBox from '../../../general/TitleBox';
 import { MontserratText } from '../../../general/Texts';
 
 export default function ContactSection() {
+    const alert = useAlert();
+
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
@@ -48,7 +51,7 @@ export default function ContactSection() {
         event.preventDefault();
         
         if (!email || !name || !message) {
-            alert("Please, insert a valid email, name and message!");
+            alert.show("You need to insert a valid email, name and message.", { type: types.ERROR });
             
             return;
         }
@@ -121,7 +124,7 @@ export default function ContactSection() {
 
                                 <Input 
                                     id="email" 
-                                    type="text" 
+                                    type="email" 
                                     placeholder="Your email here..." 
                                     onChange={handleChangeEmail}
                                     required 

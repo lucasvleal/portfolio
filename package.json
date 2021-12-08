@@ -15,12 +15,16 @@
     "framer-motion": "^3.10.5",
     "next": "10.0.8",
     "react": "17.0.1",
+    "react-alert": "^7.0.3",
     "react-dom": "17.0.1",
+    "react-scroll": "^1.8.4",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.34",
     "@types/react": "^17.0.3",
+    "@types/react-alert": "^5.2.1",
+    "@types/react-input-mask": "^3.0.1",
     "@types/styled-components": "^5.1.8",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-styled-components": "^1.12.0",

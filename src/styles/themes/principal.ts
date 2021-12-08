@@ -7,6 +7,20 @@ const theme = {
         orange: '#E3360B',
         backgroundColored: '#FAFAFA',
     },
+    alerts: {
+        success: {
+            background: '#EDF7ED',
+            color: '#65BA68',
+        },
+        info: {
+            background: '#E8F4FD',
+            color: '#35A0F4',
+        },
+        error: {
+            background: '#FDECEA',
+            color: '#F55448',
+        },
+    },
     size: {
         font: {
             titleSection: '72px',

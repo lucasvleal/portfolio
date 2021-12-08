@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 import { FlexContainer } from '../../../../styles/GeneralComponents';
 
-import theme from '../../../../styles/themes/principal'
-
 export const About = styled.div`
     min-height: 100vh;
     padding: 0 ${({ theme }) => theme.size.padding.horizontalContainer};
