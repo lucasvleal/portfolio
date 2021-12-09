@@ -2,7 +2,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import IconTechnology from '../IconTechnology';
-import { MontserratText, RegularText, VidalokaText } from '../../../general/Texts';
 
 import { 
     Background,
@@ -16,9 +15,13 @@ import {
     TechnologiesBox,
     IconsTechnologies,
 } from './styles';
-import CustomLink from '../../../general/CustomLink';
+
 import theme from '../../../../styles/themes/principal';
-import { ILink } from '../../../../data/projects';
+
+import { MontserratText, RegularText, VidalokaText } from '../../../general/Texts';
+import CustomLink from '../../../general/CustomLink';
+
+import { ILink } from '../../../../store/data/projects';
 
 interface Props {
     open: boolean;
@@ -49,7 +52,7 @@ export default function Modal({ open, title, description, technologies, mockupLi
                 
                 <DescriptionAndMockupBox>
                     <MockupBox>
-                        <img src={`/${mockupLink}`} height={300} width={"100%"} alt=""/>
+                        <img src={`/${mockupLink}`} height={"100%"} width={"100%"} alt={`Mockup for project ${title}`} />
                     </MockupBox>
 
                     <DescriptionBox>

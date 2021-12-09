@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { Container } from '../styles/pages/Home';
 
-import { IProject } from '../data/projects';
+import { IProject } from '../store/data/projects';
 
 import SEO from '../components/SEO';
 

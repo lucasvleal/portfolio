@@ -33,8 +33,13 @@ export const FormRow = styled(FlexContainer)`
     @media (max-width: 768px) {
         flex-direction: column;
 
+        & > div  {
+            margin-bottom: 40px;
+        }
+
         & > div + div {
             margin-left: 0;
+            margin-bottom: 0;
         }
     }
 `;

@@ -119,7 +119,7 @@ export const MockupBox = styled.div`
     height: 100%;
 
     & > img {
-        object-fit: cover;
+        object-fit: contain;
     }
 
     @media (max-width: 768px) {

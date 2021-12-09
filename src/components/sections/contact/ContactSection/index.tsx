@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useCallback, useState, useRef, useMemo } from 'react';
+import React, { ChangeEvent, FormEvent, useCallback, useState, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { types, useAlert } from 'react-alert';
 
@@ -17,6 +17,11 @@ import {
 
 import TitleBox from '../../../general/TitleBox';
 import { MontserratText } from '../../../general/Texts';
+import Loader from '../../../general/Loader';
+
+import { constructEmailBody } from '../../../../store/utilities/formatters';
+
+import { sendEmail } from '../../../../store/api/sendEmail';
 
 export default function ContactSection() {
     const alert = useAlert();
@@ -25,6 +30,8 @@ export default function ContactSection() {
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+
+    const [isSending, setIsSending] = useState(false);
 
     const isNameInputColorized = useMemo(() => name !== '', [name]);
     const isPhoneInputColorized = useMemo(() => phone !== '', [phone]);
@@ -45,32 +52,47 @@ export default function ContactSection() {
 
     const handleChangeMessage = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
         setMessage(event.target.value);
-    }, [])
+    }, [])       
 
-    const handleSendEmail = useCallback((event: FormEvent) => {
+    const handleSendEmail = useCallback(async (event: FormEvent) => {
+        setIsSending(true);
+
         event.preventDefault();
         
         if (!email || !name || !message) {
             alert.show("You need to insert a valid email, name and message.", { type: types.ERROR });
             
+            setIsSending(false);
             return;
         }
         
-        let body = `
-        Hello Lucas! I am ${name}, I came to you through your portfolio, I would like to leave a message %0D%0A%0D%0A
-        
-        My infos ---- %0D%0A
-        Phone: ${phone} %0D%0A
-        Email: ${email} %0D%0A%0D%0A
-        
-        Message ---- %0D%0A
-        ${message} %0D%0A%0D%0A
-        `;
-        
-        const mailTo = `mailto:lucasleal.dev@gmail.com?subject=Contact%20From%20Portfolio&body=${body}`;
-        
-        window.location.href = mailTo;
+        const body = constructEmailBody({
+            email,
+            name,
+            message,
+            phone,
+        });
+
+        const response = await sendEmail(body);
+
+        if (response) {
+            alert.show("Your email was been sent and I'll return you soon.", { type: types.SUCCESS });
+            
+            clearData();
+            return;
+        }
+
+        alert.show("Something went wrong sending your email, please try again later.", { type: types.ERROR });
+        setIsSending(false);
     }, [name, phone, email, message]);
+
+    const clearData = useCallback(() => {
+        setName('');
+        setPhone('');
+        setEmail('');
+        setMessage('');
+        setIsSending(false);
+    }, []);
 
     return (
         <Contact id="contact">
@@ -92,6 +114,7 @@ export default function ContactSection() {
                                     type="text" 
                                     placeholder="Your name here..." 
                                     onChange={handleChangeName}
+                                    value={name}
                                     required 
                                 />
                             </ContainerInput>
@@ -108,6 +131,7 @@ export default function ContactSection() {
                                     type="text" 
                                     placeholder="Your phone here..."
                                     onChange={handleChangePhone}
+                                    value={phone}
                                 />
                             </ContainerInput>
                         </InputGroup>
@@ -127,6 +151,7 @@ export default function ContactSection() {
                                     type="email" 
                                     placeholder="Your email here..." 
                                     onChange={handleChangeEmail}
+                                    value={email}
                                     required 
                                 />
                             </ContainerInput>
@@ -144,6 +169,7 @@ export default function ContactSection() {
                                 id="message" 
                                 placeholder="Your message here..."
                                 onChange={handleChangeMessage}
+                                value={message}
                                 required 
                             ></TextArea>
                         </InputGroup>
@@ -151,7 +177,7 @@ export default function ContactSection() {
 
                     <ButtonBox>
                         <ButtonSend onClick={handleSendEmail}>
-                            SEND
+                            { isSending ? <Loader size="small" /> : 'SEND'}
                         </ButtonSend>
                     </ButtonBox>
                 </Form>

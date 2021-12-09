@@ -30,6 +30,20 @@ const theme = {
         padding: {
             horizontalContainer: '8.33vw',
         },
+        loader: {
+            small: {
+                border: '2px',
+                generalSize: '20px',
+            },
+            medium: {
+                border: '4px',
+                generalSize: '40px',
+            },
+            large: {
+                border: '6px',
+                generalSize: '60px',
+            },
+        }
     },
     font: {
         principal: 'Noto Sans JP',
