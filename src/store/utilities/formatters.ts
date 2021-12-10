@@ -1,9 +1,5 @@
-interface EmailBodyProps {
-    name: string;
-    email: string;
-    message: string;
-    phone?: string;
-}
+import type { EmailBodyProps } from "../types/email";
+
 
 export const constructEmailBody = ({ name, email, message, phone }: EmailBodyProps) => {
     const body = `

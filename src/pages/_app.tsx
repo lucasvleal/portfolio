@@ -1,16 +1,26 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { transitions, positions, Provider as AlertProvider } from 'react-alert';
+import { Provider as AlertProvider } from 'react-alert';
 import Head from 'next/head';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faTimes, faUser, faEnvelope, faPhoneAlt, faExclamation, faCheckDouble, faInfo } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faTimes, 
+  faUser, 
+  faEnvelope, 
+  faPhoneAlt, 
+  faExclamation, 
+  faCheckDouble, 
+  faInfo 
+} from '@fortawesome/free-solid-svg-icons';
 
 import GlobalStyle from '../styles/GlobalStyle';
 import theme from '../styles/themes/principal';
 
 import Alert from '../components/general/Alert';
+
+import { alertOptions } from '../store/hooks/useAlert';
 
 library.add(fab, faTimes);
 library.add(fab, faUser);
@@ -21,14 +31,7 @@ library.add(fab, faCheckDouble);
 library.add(fab, faInfo);
 
 export default function MyApp({ Component, pageProps }) {
-  const options = useMemo(() => ({
-    position: positions.TOP_CENTER,
-    timeout: 5000,
-    offset: '30px',
-    transition: transitions.SCALE,
-  }), [])
-
-  const alertTemplate = ({ options, message, close }) => (
+  const AlertTemplate = ({ options, message, close }) => (
     <Alert 
       type={options.type}
       message={message}
@@ -38,7 +41,7 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <AlertProvider template={alertTemplate} {...options}>
+      <AlertProvider template={AlertTemplate} {...alertOptions}>
         <ThemeProvider theme={theme}>
           <Head>
             <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

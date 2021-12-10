@@ -6,7 +6,8 @@ import {
     LoadingMoreBox,
 } from './styles';
 
-import projects, { IProject } from '../../../../store/data/projects';
+import projects from '../../../../store/data/projects';
+import type { IProject } from '../../../../store/types/project';
 
 import TitleBox from '../../../general/TitleBox';
 import { VidalokaText } from '../../../general/Texts';

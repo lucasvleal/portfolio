@@ -21,7 +21,7 @@ import theme from '../../../../styles/themes/principal';
 import { MontserratText, RegularText, VidalokaText } from '../../../general/Texts';
 import CustomLink from '../../../general/CustomLink';
 
-import { ILink } from '../../../../store/data/projects';
+import type { ILink } from '../../../../store/types/project';
 
 interface Props {
     open: boolean;

@@ -35,5 +35,5 @@ export default async function handler(request: NextApiRequest, response: NextApi
         }    
     } 
 
-    return response.status(401);
+    return response.status(400);
 }

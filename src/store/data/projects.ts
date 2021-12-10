@@ -1,16 +1,4 @@
-export interface IProject {
-  id: number;
-  title: string;
-  description: string;
-  link: ILink[];
-  technologies: string[];
-  mockup: string;
-}
-
-export interface ILink {
-  url: string;
-  title: string;
-}
+import type { IProject } from "../types/project";
 
 const projects: IProject[] = [
     {  

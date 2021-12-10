@@ -1,6 +1,5 @@
 import React, { ChangeEvent, FormEvent, useCallback, useState, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { types, useAlert } from 'react-alert';
 
 import { 
     Contact,
@@ -22,6 +21,7 @@ import Loader from '../../../general/Loader';
 import { constructEmailBody } from '../../../../store/utilities/formatters';
 
 import { sendEmail } from '../../../../store/api/sendEmail';
+import useAlert, { alertTypes } from '../../../../store/hooks/useAlert';
 
 export default function ContactSection() {
     const alert = useAlert();
@@ -60,7 +60,10 @@ export default function ContactSection() {
         event.preventDefault();
         
         if (!email || !name || !message) {
-            alert.show("You need to insert a valid email, name and message.", { type: types.ERROR });
+            alert.show({
+                message: "You need to insert a valid email, name and message.", 
+                type: alertTypes.ERROR,
+            });
             
             setIsSending(false);
             return;
@@ -76,13 +79,19 @@ export default function ContactSection() {
         const response = await sendEmail(body);
 
         if (response) {
-            alert.show("Your email was been sent and I'll return you soon.", { type: types.SUCCESS });
+            alert.show({
+                message: "Your email was been sent and I'll return you soon.", 
+                type: alertTypes.SUCCESS,
+            });
             
             clearData();
             return;
         }
 
-        alert.show("Something went wrong sending your email, please try again later.", { type: types.ERROR });
+        alert.show({
+            message: "Something went wrong sending your email, please try again later.", 
+            type: alertTypes.ERROR,
+        });
         setIsSending(false);
     }, [name, phone, email, message]);
 
@@ -176,7 +185,7 @@ export default function ContactSection() {
                     </FormRow>
 
                     <ButtonBox>
-                        <ButtonSend onClick={handleSendEmail}>
+                        <ButtonSend disabled={isSending} onClick={handleSendEmail}>
                             { isSending ? <Loader size="small" /> : 'SEND'}
                         </ButtonSend>
                     </ButtonBox>
