@@ -2,11 +2,12 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 import { Container } from '../styles/pages/Home';
 
-import { IProject } from '../store/data/projects';
+import { IProject } from '../store/types/project';
 
 import SEO from '../components/SEO';
 
 import Footer from '../components/general/Footer';
+import ScrollToTop from '../components/general/ScrollToTop';
 
 import GreetingSection from '../components/sections/greeting/GreetingSection';
 import AboutSection from '../components/sections/about/AboutSection';
@@ -17,11 +18,21 @@ import ContactSection from '../components/sections/contact/ContactSection';
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+
   const [projectTitle, setProjectTitle] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
   const [projectLinks, setProjectLinks] = useState([]);
   const [projectTechnologies, setProjectTechnologies] = useState([]);
   const [projectMockup, setProjectMockup] = useState('');
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleSetScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleSetScroll);
+    };
+  }, []);
 
   const handleOpenModalProject = useCallback((project: IProject) => {
     setProjectTitle(project.title);
@@ -32,6 +43,11 @@ export default function Home() {
 
     setIsModalOpen(true);
   }, []);  
+
+  const handleSetScroll = useCallback(() => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  }, []);
 
   return (
     <Container>
@@ -60,6 +76,8 @@ export default function Home() {
         mockupLink={projectMockup}
         handleCloseModal={() => setIsModalOpen(false)}
       />
+
+      {scrollPosition > 600 && <ScrollToTop />}
     </Container>
   )
 }

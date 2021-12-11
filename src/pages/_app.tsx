@@ -12,7 +12,8 @@ import {
   faPhoneAlt, 
   faExclamation, 
   faCheckDouble, 
-  faInfo 
+  faInfo,
+  faArrowUp,
 } from '@fortawesome/free-solid-svg-icons';
 
 import GlobalStyle from '../styles/GlobalStyle';
@@ -29,6 +30,7 @@ library.add(fab, faPhoneAlt);
 library.add(fab, faExclamation);
 library.add(fab, faCheckDouble);
 library.add(fab, faInfo);
+library.add(fab, faArrowUp);
 
 export default function MyApp({ Component, pageProps }) {
   const AlertTemplate = ({ options, message, close }) => (

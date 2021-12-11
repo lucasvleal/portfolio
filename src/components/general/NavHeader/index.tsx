@@ -1,5 +1,4 @@
 import React from 'react';
-import { scroller, Link } from 'react-scroll';
 
 import { Container, ItemNav } from './styles';
 
