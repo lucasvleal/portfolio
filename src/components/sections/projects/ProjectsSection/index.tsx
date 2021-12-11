@@ -64,7 +64,7 @@ export default function ProjectsSection({ onClickProject }: Props) {
                 {
                     projectsToShow.length === projects.length ?
                     <a target="_blank" href="https://github.com/lucasvleal">
-                        <VidalokaText size={24}>see much more on github</VidalokaText>
+                        <VidalokaText size={20}>see many more public projects on github</VidalokaText>
                     </a>
                     :
                     <VidalokaText size={48}>+</VidalokaText>
