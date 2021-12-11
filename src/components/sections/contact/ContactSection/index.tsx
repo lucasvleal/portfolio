@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useCallback, useState, useMemo } from 'react';
+import React, { ChangeEvent, FormEvent, useCallback, useState, useMemo, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { 
@@ -19,9 +19,10 @@ import { MontserratText } from '../../../general/Texts';
 import Loader from '../../../general/Loader';
 
 import { constructEmailBody } from '../../../../store/utilities/formatters';
+import { isValidEmail } from '../../../../store/utilities/validations';
+import useAlert, { alertTypes } from '../../../../store/hooks/useAlert';
 
 import { sendEmail } from '../../../../store/api/sendEmail';
-import useAlert, { alertTypes } from '../../../../store/hooks/useAlert';
 
 export default function ContactSection() {
     const alert = useAlert();
@@ -33,10 +34,33 @@ export default function ContactSection() {
 
     const [isSending, setIsSending] = useState(false);
 
-    const isNameInputColorized = useMemo(() => name !== '', [name]);
-    const isPhoneInputColorized = useMemo(() => phone !== '', [phone]);
-    const isEmailInputColorized = useMemo(() => email !== '', [email]);
-    const isMessageInputColorized = useMemo(() => message !== '', [message]);
+    const [hasNameInputError, setHasNameInputError] = useState(false);
+    const [hasPhoneInputError, setHasPhoneInputError] = useState(false);
+    const [hasEmailInputError, setHasEmailInputError] = useState(false);
+    const [hasMessageInputError, setHasMessageInputError] = useState(false);
+
+    const isNameInputFullfilled = useMemo(() => name !== '', [name]);
+    const isPhoneInputFullfilled = useMemo(() => phone !== '', [phone]);
+    const isEmailInputFullfilled = useMemo(() => email !== '', [email]);
+    const isMessageInputFullfilled = useMemo(() => message !== '', [message]);
+
+    useEffect(() => {
+        if (hasNameInputError) {
+            setHasNameInputError(false);
+        }
+    }, [name])
+
+    useEffect(() => {
+        if (hasEmailInputError) {
+            setHasEmailInputError(false);
+        }
+    }, [email])
+
+    useEffect(() => {
+        if (hasMessageInputError) {
+            setHasMessageInputError(false);
+        }
+    }, [message])
 
     const handleChangeName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
@@ -60,8 +84,32 @@ export default function ContactSection() {
         event.preventDefault();
         
         if (!email || !name || !message) {
+            if (!email) {
+                setHasEmailInputError(true);
+            }
+
+            if (!name) {
+                setHasNameInputError(true);
+            }
+
+            if (!message) {
+                setHasMessageInputError(true);
+            }
+
             alert.show({
-                message: "You need to insert a valid email, name and message.", 
+                message: "Please, insert all mandatory fields.", 
+                type: alertTypes.ERROR,
+            });
+            
+            setIsSending(false);
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            setHasEmailInputError(true);
+
+            alert.show({
+                message: "Please, insert a valid email.", 
                 type: alertTypes.ERROR,
             });
             
@@ -92,6 +140,7 @@ export default function ContactSection() {
             message: "Something went wrong sending your email, please try again later.", 
             type: alertTypes.ERROR,
         });
+
         setIsSending(false);
     }, [name, phone, email, message]);
 
@@ -115,7 +164,7 @@ export default function ContactSection() {
                                 NAME <MontserratText color="tomato" weight="600">*</MontserratText>
                             </label>
 
-                            <ContainerInput colorized={isNameInputColorized}>
+                            <ContainerInput hasError={hasNameInputError} fullfilled={isNameInputFullfilled}>
                                 <FontAwesomeIcon icon="user" />
 
                                 <Input 
@@ -132,7 +181,7 @@ export default function ContactSection() {
                         <InputGroup>
                             <label htmlFor="phone">PHONE</label>
                             
-                            <ContainerInput colorized={isPhoneInputColorized}>
+                            <ContainerInput hasError={hasPhoneInputError} fullfilled={isPhoneInputFullfilled}>
                                 <FontAwesomeIcon icon="phone-alt" />
 
                                 <Input 
@@ -152,7 +201,7 @@ export default function ContactSection() {
                                 EMAIL <MontserratText color="tomato" weight="600">*</MontserratText>
                             </label>
 
-                            <ContainerInput colorized={isEmailInputColorized}>
+                            <ContainerInput hasError={hasEmailInputError} fullfilled={isEmailInputFullfilled}>
                                 <FontAwesomeIcon icon="envelope" />
 
                                 <Input 
@@ -174,7 +223,8 @@ export default function ContactSection() {
                             </label>
 
                             <TextArea
-                                colorized={isMessageInputColorized}
+                                hasError={hasMessageInputError} 
+                                fullfilled={isMessageInputFullfilled}
                                 id="message" 
                                 placeholder="Your message here..."
                                 onChange={handleChangeMessage}

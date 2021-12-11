@@ -11,7 +11,6 @@ interface Props {
 }
 
 export default function Alert({ message = 'An error ocurred. Try again later', type = 'error', close }: Props) {
-    console.log(type, close, message)
     return (
         <Container type={type}>
             <BoxIcon>

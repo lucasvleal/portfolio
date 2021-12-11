@@ -1,9 +1,19 @@
 import styled from 'styled-components';
 
 import { FlexContainer, FlexContainerColumn } from '../../../../styles/GeneralComponents';
+import theme from '../../../../styles/themes/principal';
 
 interface ContainerInputProps {
-    colorized: boolean;
+    fullfilled: boolean;
+    hasError: boolean;
+}
+
+const whichColorToColorize = (props: ContainerInputProps) => {
+    if (props.hasError) return theme.alerts.error.color;
+
+    if (props.fullfilled) return theme.color.black;
+
+    return 'rgba(0,0,0,0.3)';
 }
 
 export const Contact = styled.div`
@@ -64,12 +74,12 @@ export const InputGroup = styled(FlexContainerColumn)`
 
 export const ContainerInput = styled(FlexContainer)<ContainerInputProps>`
     align-items: center;
-    border-bottom: 1px solid ${(props) => props.colorized ? 'rgba(0,0,0,1)' : 'rgba(0,0,0,0.3)'};
+    border-bottom: 1px solid ${(props) => whichColorToColorize(props)};
 
     & > svg {
         margin-right: 8px;
         font-size: 16px;
-        color: ${(props) => props.colorized ? 'rgba(0,0,0,1)' : 'rgba(0,0,0,0.3)'};
+        color: ${(props) => whichColorToColorize(props)};
     }
 `;
 
@@ -113,7 +123,7 @@ export const TextArea = styled.textarea<ContainerInputProps>`
     border-radius: 5px; */
 
     border: none;
-    border-bottom: 1px solid ${(props) => props.colorized ? 'rgba(0,0,0,1)' : 'rgba(0,0,0,0.3)'};
+    border-bottom: 1px solid ${(props) => whichColorToColorize(props)};
     background-color: transparent;
 
     outline: none;
