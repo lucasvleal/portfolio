@@ -52,8 +52,8 @@ export default function Home() {
   return (
     <Container>
       <SEO 
-        title={`Lucas Leal, 23`}
-        description="Portfolio site of the Full Stack and Mobile developer Lucas Leal."
+        title={`<Lucas Leal />`}
+        description="The Software Engineer Lucas Leal's personal site."
         shouldExcludeTitleSuffix
       />
 

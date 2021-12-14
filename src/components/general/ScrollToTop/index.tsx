@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { animateScroll } from 'react-scroll';
 
@@ -9,8 +9,19 @@ export default function ScrollToTop() {
         animateScroll.scrollToTop();
     }, []);
 
+    const variants = useMemo(() => ({ 
+        hidden: { opacity: 0, y: -20 },
+        visible: { opacity: 1, y: 0 },
+    }), []);
+
     return (
-        <Container onClick={handleScrollToTop}>
+        <Container 
+            variants ={variants}
+            initial="hidden"
+            animate="visible"
+            transition={{ type: "spring", stiffness: 80 }}
+            onClick={handleScrollToTop}
+        >
           <FontAwesomeIcon icon="arrow-up" />
         </Container>
     )

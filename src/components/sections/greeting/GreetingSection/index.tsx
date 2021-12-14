@@ -31,8 +31,8 @@ export default function GreetingSection() {
             <NavHeader />
 
             <NameAndTitle>
-                <MontserratText size={100} weight="bold">
-                    Lucas Leal, {howOlderAmI}
+                <MontserratText size={110} weight="bold">
+                    {'<Lucas Leal />'}                    
                 </MontserratText>
 
                 <Typer 

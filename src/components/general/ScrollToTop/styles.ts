@@ -1,8 +1,8 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import { FlexContainer } from '../../../styles/GeneralComponents';
-
-export const Container = styled(FlexContainer)`
+export const Container = styled(motion.div)`
+    display: flex;
     justify-content: center;
     align-items: center;
 
