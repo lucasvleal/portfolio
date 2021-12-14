@@ -28,6 +28,7 @@
     "@types/react": "^17.0.3",
     "@types/react-alert": "^5.2.1",
     "@types/react-input-mask": "^3.0.1",
+    "@types/react-scroll": "^1.8.3",
     "@types/styled-components": "^5.1.8",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-styled-components": "^1.12.0",
