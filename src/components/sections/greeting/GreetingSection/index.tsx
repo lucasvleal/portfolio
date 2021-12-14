@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { 
     Greeting,    
@@ -13,19 +13,6 @@ import NavHeader from '../../../general/NavHeader';
 import Typer from '../Typer';
 
 export default function GreetingSection() {
-    const currentYear = useMemo(() => new Date(Date.now()).getFullYear(), []);
-
-    const howOlderAmI = useMemo(() => {
-        const YEAR_I_BORN = 1998;
-
-        const currentTime = new Date(Date.now());
-        const years = currentYear - YEAR_I_BORN;
-    
-        const isAfterMyBirthday = new Date(currentTime.toDateString()) >= new Date(new Date(currentTime.getFullYear(), 2, 27).toDateString());
-    
-        return isAfterMyBirthday ? years : years - 1;
-    }, []);
-
     return (
         <Greeting>
             <NavHeader />
@@ -37,10 +24,10 @@ export default function GreetingSection() {
 
                 <Typer 
                     texts={[
-                    "Software Engineer.",
-                    "Front-end lover.", 
-                    "Mobile enthusiast.",
-                    "Passionate about sports and technology."
+                        "Software Engineer.",
+                        "Front-end lover.", 
+                        "Mobile enthusiast.",
+                        "Passionate about sports and technology."
                     ]}
                 />
             </NameAndTitle>
