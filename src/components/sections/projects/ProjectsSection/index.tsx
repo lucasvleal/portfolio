@@ -63,7 +63,7 @@ export default function ProjectsSection({ onClickProject }: Props) {
             <LoadingMoreBox onClick={handleShowMoreProjects}>
                 {
                     projectsToShow.length === projects.length ?
-                    <a target="_blank" href="https://github.com/lucasvleal">
+                    <a style={{ textAlign: 'center' }} target="_blank" href="https://github.com/lucasvleal">
                         <VidalokaText size={20}>see many more public projects on github</VidalokaText>
                     </a>
                     :

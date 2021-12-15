@@ -7,6 +7,7 @@ import {
     Form,
     FormRow,
     InputGroup,
+    OptionalInputLabel,
     ContainerInput,
     Input,
     TextArea,
@@ -179,7 +180,7 @@ export default function ContactSection() {
                         </InputGroup>
 
                         <InputGroup>
-                            <label htmlFor="phone">PHONE</label>
+                            <label htmlFor="phone">PHONE <OptionalInputLabel>(optional)</OptionalInputLabel></label>
                             
                             <ContainerInput hasError={hasPhoneInputError} fullfilled={isPhoneInputFullfilled}>
                                 <FontAwesomeIcon icon="phone-alt" />

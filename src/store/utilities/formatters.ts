@@ -17,7 +17,7 @@ export const constructEmailBody = ({ name, email, message, phone }: EmailBodyPro
     ${message}
     <br/><br/>
 
-    <h3>------------------------------------</h3>
+    <h3>------------------------------</h3>
     `;
 
     return body;

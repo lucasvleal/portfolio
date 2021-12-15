@@ -72,6 +72,12 @@ export const InputGroup = styled(FlexContainerColumn)`
     }
 `;
 
+export const OptionalInputLabel = styled.span`
+    font-size: 10px;
+    color: ${({ theme }) => theme.color.lightGray};
+    margin-left: 2px;
+`;
+
 export const ContainerInput = styled(FlexContainer)<ContainerInputProps>`
     align-items: center;
     border-bottom: 1px solid ${(props) => whichColorToColorize(props)};
@@ -123,6 +129,7 @@ export const TextArea = styled.textarea<ContainerInputProps>`
     border-radius: 5px; */
 
     border: none;
+    border-radius: 0;
     border-bottom: 1px solid ${(props) => whichColorToColorize(props)};
     background-color: transparent;
 
