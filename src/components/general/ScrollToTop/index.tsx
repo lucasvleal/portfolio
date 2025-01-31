@@ -25,7 +25,7 @@ export default function ScrollToTop() {
       transition={{ type: "spring", stiffness: 80 }}
       onClick={handleScrollToTop}
     >
-      <FontAwesomeIcon icon="arrow-up" />
+      <FontAwesomeIcon width={14} icon="arrow-up" />
     </Container>
   );
 }
