@@ -4,7 +4,11 @@ import { Provider as AlertProvider } from "react-alert";
 import Head from "next/head";
 
 import { library, IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faLinkedinIn,
+  faMediumM,
+} from "@fortawesome/free-brands-svg-icons";
 import {
   faTimes,
   faUser,
@@ -31,7 +35,10 @@ library.add(
   faExclamation as IconDefinition,
   faCheckDouble as IconDefinition,
   faInfo as IconDefinition,
-  faArrowUp as IconDefinition
+  faArrowUp as IconDefinition,
+  faLinkedinIn as IconDefinition,
+  faGithub as IconDefinition,
+  faMediumM as IconDefinition
 );
 
 export default function MyApp({ Component, pageProps }) {
