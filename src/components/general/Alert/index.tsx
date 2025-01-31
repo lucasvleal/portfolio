@@ -21,7 +21,7 @@ export default function Alert({
         {type === types.INFO && <FontAwesomeIcon width={10} icon="info" />}
 
         {type === types.SUCCESS && (
-          <FontAwesomeIcon width={10} icon="check-double" />
+          <FontAwesomeIcon width={14} icon="check-double" />
         )}
 
         {type === types.ERROR && (
